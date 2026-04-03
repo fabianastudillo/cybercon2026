@@ -664,23 +664,38 @@
         }
 
         .speaker-card {
-            padding: 28px 40px;
+            padding: 20px 30px;
             border-bottom: 1px solid var(--gris-claro);
             border-right: 1px solid var(--gris-claro);
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
         }
         .speaker-card:nth-child(even) {
             border-right: none;
         }
 
+        .speaker-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 3px solid var(--ublue);
+        }
+
+        .speaker-info {
+            flex: 1;
+        }
+
         .speaker-name {
             font-family: 'Alegreya Sans', sans-serif;
             font-weight: 800;
-            font-size: 22px;
+            font-size: 20px;
             color: var(--ublue);
-            margin-bottom: 6px;
+            margin-bottom: 4px;
+            line-height: 1.2;
         }
 
         .speaker-topic {
@@ -949,6 +964,9 @@
             <!-- CEDIA -->
             <div style="font-family:'Alegreya Sans',sans-serif;font-weight:700;font-size:22px;color:#4FC0E5;">cedia</div>
             <div style="width:1px;height:20px;background:rgba(255,255,255,0.15);"></div>
+            <!-- IronCybersec -->
+            <img src="logos/IronCybersec/Blanco y Negro/logo_blancosinfondo.png" style="height:22px;object-fit:contain;">
+            <div style="width:1px;height:20px;background:rgba(255,255,255,0.15);"></div>
             <!-- Fernando Illescas -->
             <img src="logos/FernandoIllescas/FERNANDO ILLESCAS.png" style="height:16px;object-fit:contain;">
             <div style="width:1px;height:20px;background:rgba(255,255,255,0.15);"></div>
@@ -999,7 +1017,7 @@
                 <div class="agenda-info">
                     <div class="agenda-type">Conferencia</div>
                     <div class="agenda-topic">DALIA: La Fuerza Colaborativa que Protege el Sector Académico (IA+SI)<br/>Reinventando la Ciber-Resiliencia en las IES mediante Modelos Escalables</div>
-                    <div class="agenda-speaker">Ing. Jorge Merch&aacute;n, Mgtr.</div>
+                    <div class="agenda-speaker">Ing. Jorge Merch&aacute;n, Mgtr., Líder de seguridad de la información de CEDIA</div>
                 </div>
             </div>
 
@@ -1008,7 +1026,7 @@
                 <div class="agenda-info">
                     <div class="agenda-type">Conferencia</div>
                     <div class="agenda-topic">Ingenier&iacute;a social avanzada, deep fake en tiempo real</div>
-                    <div class="agenda-speaker">Ing. Christian O&ntilde;a</div>
+                    <div class="agenda-speaker">Ing. Christian O&ntilde;a, MSc., Red Team Manager</div>
                 </div>
             </div>
 
@@ -1025,7 +1043,7 @@
                 <div class="agenda-info">
                     <div class="agenda-type">Conferencia</div>
                     <div class="agenda-topic">Seguridad de Datos: Fortaleciendo la Confianza en el Sector Bancario</div>
-                    <div class="agenda-speaker">Ing. Jessica Morales, Mgtr.</div>
+                    <div class="agenda-speaker">Ing. Jessica Morales, Mgtr., Oficial de Seguridad de la Información</div>
                 </div>
             </div>
 
@@ -1034,7 +1052,7 @@
                 <div class="agenda-info">
                     <div class="agenda-type">Conferencia</div>
                     <div class="agenda-topic">Riesgos de IA en las pasarelas de pagos</div>
-                    <div class="agenda-speaker">Ing. Christian Cuenca</div>
+                    <div class="agenda-speaker">Ing. Christian Cuenca, MSc., Director de Seguridad de la Información en Kushki</div>
                 </div>
             </div>
 
@@ -1073,6 +1091,9 @@
             <div style="width:1px;height:18px;background:#ddd;"></div>
             <!-- CEDIA -->
             <div style="font-family:'Alegreya Sans',sans-serif;font-weight:700;font-size:26px;color:#121A54;">cedia</div>
+            <div style="width:1px;height:18px;background:#ddd;"></div>
+            <!-- IronCybersec -->
+            <img src="logos/IronCybersec/Para Web/logo-nobackground-200.png" style="height:20px;object-fit:contain;">
             <div style="width:1px;height:18px;background:#ddd;"></div>
             <!-- Fernando Illescas -->
             <img src="logos/FernandoIllescas/FERNANDO ILLESCAS 1.png" style="height:14px;object-fit:contain;">
@@ -1117,7 +1138,7 @@
                 <div class="agenda-info">
                     <div class="agenda-type">Inauguraci&oacute;n CTF</div>
                     <div class="agenda-topic">Bienvenida e inauguraci&oacute;n del evento CTF</div>
-                    <div class="agenda-speaker">Ing. Fabi&aacute;n I&ntilde;iguez, Mgtr. &ndash; Grupo Radical</div>
+                    <div class="agenda-speaker">Ing. Fabi&aacute;n I&ntilde;iguez, Mgtr. &ndash; Grupo RADICAL</div>
                 </div>
             </div>
 
@@ -1126,7 +1147,7 @@
                 <div class="agenda-info">
                     <div class="agenda-type">Conferencia</div>
                     <div class="agenda-topic">Tras la huella del Hacker &ndash; Ciberseguridad en el Ecuador</div>
-                    <div class="agenda-speaker">Ing. Fabi&aacute;n I&ntilde;iguez, Mgtr. &ndash; Grupo Radical</div>
+                    <div class="agenda-speaker">Ing. Fabi&aacute;n I&ntilde;iguez, Mgtr. &ndash; Grupo RADICAL</div>
                 </div>
             </div>
 
@@ -1135,7 +1156,7 @@
                 <div class="agenda-info">
                     <div class="agenda-type">Conferencia</div>
                     <div class="agenda-topic">Hackear la IA: Seguridad para la Era de la Inteligencia Artificial</div>
-                    <div class="agenda-speaker">Ing. Jorge Moya</div>
+                    <div class="agenda-speaker">Ing. Jorge Moya, Mgtr., CTO en Ironcybersec</div>
                 </div>
             </div>
 
@@ -1152,7 +1173,7 @@
                 <div class="agenda-info">
                     <div class="agenda-type">Conferencia</div>
                     <div class="agenda-topic">Errores cr&iacute;ticos en el manejo de evidencia digital: an&aacute;lisis de casos y consecuencias en procesos judiciales</div>
-                    <div class="agenda-speaker">Mayor Marco Aurelio Pazmi&ntilde;o</div>
+                    <div class="agenda-speaker">My. Marco A. Pazmi&ntilde;o, Asesor Estrat&eacute;gico Operacional de la Direcci&oacute;n Nacional de Investigaci&oacute;n T&eacute;cnico Cient&iacute;fica</div>
                 </div>
             </div>
 
@@ -1161,7 +1182,7 @@
                 <div class="agenda-info">
                     <div class="agenda-type">Conferencia</div>
                     <div class="agenda-topic">Red Team 2.0: Automatizando Pentests con Kali y Claude MCP</div>
-                    <div class="agenda-speaker">Dr. Andr&eacute;s Robles</div>
+                    <div class="agenda-speaker">Dr. Andr&eacute;s Robles, Profesional de Seguridad de la Informaci&oacute;n</div>
                 </div>
             </div>
 
@@ -1191,6 +1212,9 @@
             <div style="width:1px;height:18px;background:#ddd;"></div>
             <!-- CEDIA -->
             <div style="font-family:'Alegreya Sans',sans-serif;font-weight:700;font-size:20px;color:#121A54;">cedia</div>
+            <div style="width:1px;height:18px;background:#ddd;"></div>
+            <!-- IronCybersec -->
+            <img src="logos/IronCybersec/Para Web/logo-nobackground-200.png" style="height:20px;object-fit:contain;">
             <div style="width:1px;height:18px;background:#ddd;"></div>
             <!-- Fernando Illescas -->
             <img src="logos/FernandoIllescas/FERNANDO ILLESCAS 1.png" style="height:16px;object-fit:contain;">
@@ -1297,44 +1321,68 @@
 
         <div class="speakers-grid">
             <div class="speaker-card">
-                <div class="speaker-day">D&iacute;a 1 &middot; Conferencia</div>
-                <div class="speaker-name">Jorge Merch&aacute;n</div>
-                <div class="speaker-topic">DALIA: La Fuerza Colaborativa que Protege el Sector Académico (IA+SI)<br/>Reinventando la Ciber-Resiliencia en las IES mediante Modelos Escalables</div>
+                <img src="conferencistas/jorgemerchan_crop.png" class="speaker-photo" alt="Jorge Merchán">
+                <div class="speaker-info">
+                    <div class="speaker-day">D&iacute;a 1 &middot; Conferencia</div>
+                    <div class="speaker-name">Jorge Merch&aacute;n, Mgtr.</div>
+                    <div class="speaker-topic">DALIA: La Fuerza Colaborativa que Protege el Sector Acad&eacute;mico (IA+SI)</div>
+                </div>
             </div>
             <div class="speaker-card">
-                <div class="speaker-day">D&iacute;a 1 &middot; Conferencia</div>
-                <div class="speaker-name">Christian O&ntilde;a</div>
-                <div class="speaker-topic">Ingenier&iacute;a social avanzada, deep fake en tiempo real</div>
+                <img src="conferencistas/christianona.png" class="speaker-photo" style="object-position:35% 15%;" alt="Christian Oña">
+                <div class="speaker-info">
+                    <div class="speaker-day">D&iacute;a 1 &middot; Conferencia</div>
+                    <div class="speaker-name">Christian O&ntilde;a, MSc.</div>
+                    <div class="speaker-topic">Ingenier&iacute;a social avanzada, deep fake en tiempo real</div>
+                </div>
             </div>
             <div class="speaker-card">
-                <div class="speaker-day">D&iacute;a 1 &middot; Conferencia</div>
-                <div class="speaker-name">Jessica Morales</div>
-                <div class="speaker-topic">Seguridad de datos en el sector bancario</div>
+                <img src="conferencistas/jessicamorales_crop.png" class="speaker-photo" alt="Jessica Morales">
+                <div class="speaker-info">
+                    <div class="speaker-day">D&iacute;a 1 &middot; Conferencia</div>
+                    <div class="speaker-name">Jessica Morales, Mgtr.</div>
+                    <div class="speaker-topic">Seguridad de datos en el sector bancario</div>
+                </div>
             </div>
             <div class="speaker-card">
-                <div class="speaker-day">D&iacute;a 1 &middot; Conferencia</div>
-                <div class="speaker-name">Christian Cuenca</div>
-                <div class="speaker-topic">Riesgos de IA en pasarelas de pagos</div>
+                <img src="conferencistas/christiancuenca.png" class="speaker-photo" alt="Christian Cuenca">
+                <div class="speaker-info">
+                    <div class="speaker-day">D&iacute;a 1 &middot; Conferencia</div>
+                    <div class="speaker-name">Christian Cuenca, MSc.</div>
+                    <div class="speaker-topic">Riesgos de IA en pasarelas de pagos</div>
+                </div>
             </div>
             <div class="speaker-card">
-                <div class="speaker-day">D&iacute;a 2 &middot; Conferencia</div>
-                <div class="speaker-name">Fabi&aacute;n I&ntilde;iguez</div>
-                <div class="speaker-topic">Tras la huella del Hacker &ndash; Ciberseguridad en Ecuador</div>
+                <img src="conferencistas/fabianIniguez_crop.png" class="speaker-photo" alt="Fabián Iñiguez">
+                <div class="speaker-info">
+                    <div class="speaker-day">D&iacute;a 2 &middot; Conferencia</div>
+                    <div class="speaker-name">Fabi&aacute;n I&ntilde;iguez, Mgtr.</div>
+                    <div class="speaker-topic">Tras la huella del Hacker &ndash; Ciberseguridad en Ecuador</div>
+                </div>
             </div>
             <div class="speaker-card">
-                <div class="speaker-day">D&iacute;a 2 &middot; Conferencia</div>
-                <div class="speaker-name">Jorge Moya</div>
-                <div class="speaker-topic">Hackear la IA: Seguridad para la Era de la IA</div>
+                <img src="conferencistas/jorgemoya_crop.png" class="speaker-photo" alt="Jorge Moya">
+                <div class="speaker-info">
+                    <div class="speaker-day">D&iacute;a 2 &middot; Conferencia</div>
+                    <div class="speaker-name">Jorge Moya, Mgtr.</div>
+                    <div class="speaker-topic">Hackear la IA: Seguridad para la Era de la IA</div>
+                </div>
             </div>
             <div class="speaker-card">
-                <div class="speaker-day">D&iacute;a 2 &middot; Conferencia</div>
-                <div class="speaker-name">My. Marco A. Pazmi&ntilde;o</div>
-                <div class="speaker-topic">Errores cr&iacute;ticos en manejo de evidencia digital</div>
+                <img src="conferencistas/mymarcopazmino_crop.png" class="speaker-photo" alt="Marco Pazmiño">
+                <div class="speaker-info">
+                    <div class="speaker-day">D&iacute;a 2 &middot; Conferencia</div>
+                    <div class="speaker-name">My. Marco A. Pazmi&ntilde;o</div>
+                    <div class="speaker-topic">Errores cr&iacute;ticos en el manejo de evidencia digital: an&aacute;lisis de casos y consecuencias en procesos judiciales</div>
+                </div>
             </div>
             <div class="speaker-card">
-                <div class="speaker-day">D&iacute;a 2 &middot; Conferencia</div>
-                <div class="speaker-name">Andr&eacute;s Robles</div>
-                <div class="speaker-topic">Red Team 2.0: Pentests con Kali y Claude MCP</div>
+                <img src="conferencistas/andresrobles_crop.png" class="speaker-photo" alt="Andrés Robles">
+                <div class="speaker-info">
+                    <div class="speaker-day">D&iacute;a 2 &middot; Conferencia</div>
+                    <div class="speaker-name">Dr. Andr&eacute;s Robles</div>
+                    <div class="speaker-topic">Red Team 2.0: Pentests con Kali y Claude MCP</div>
+                </div>
             </div>
         </div>
 
@@ -1388,7 +1436,7 @@
                     <div style="text-align:center;flex-shrink:0;">
                         <img src="png_exports/QR_CTF_CyberCon2026.png" style="width:140px;height:140px;border-radius:10px;border:3px solid rgba(255,255,255,0.3);">
                         <div style="font-family:'Alegreya Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.7);margin-top:6px;font-weight:700;">Reg&iacute;strate aqu&iacute;</div>
-                        <div style="font-family:'Alegreya Sans',sans-serif;font-size:10px;color:rgba(255,255,255,0.5);margin-top:2px;">forms.cloud.microsoft/r/QMqTabkwGC</div>
+                        <div style="font-family:'Alegreya Sans',sans-serif;font-size:16px;color:rgba(255,255,255,0.65);margin-top:4px;">forms.cloud.microsoft/r/QMqTabkwGC</div>
                     </div>
                 </div>
             </div>
@@ -1411,12 +1459,15 @@
                 <!-- CEDIA -->
                 <div style="font-family:'Alegreya Sans',sans-serif;font-weight:700;font-size:26px;color:#4FC0E5;letter-spacing:1px;">cedia</div>
                 <div style="width:1px;height:25px;background:rgba(255,255,255,0.15);"></div>
+                <!-- IronCybersec -->
+                <img src="logos/IronCybersec/Blanco y Negro/logo_blancosinfondo.png" style="height:24px;object-fit:contain;">
+                <div style="width:1px;height:25px;background:rgba(255,255,255,0.15);"></div>
                 <!-- Fernando Illescas -->
                 <img src="logos/FernandoIllescas/FERNANDO ILLESCAS.png" style="height:18px;object-fit:contain;">
             </div>
         </div>
 
-        <!-- Bottom bar: Grupo Radical orange accent -->
+        <!-- Bottom bar: Grupo RADICAL orange accent -->
         <div style="position:absolute;bottom:0;left:0;right:0;display:flex;height:10px;">
             <span style="flex:1;background:#F07D00"></span>
             <span style="flex:1;background:var(--ucred)"></span>
@@ -1463,10 +1514,10 @@
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px 35px;">
                 <!-- Day 1 -->
                 <div>
-                    <div style="font-family:'Alegreya Sans',sans-serif;font-weight:800;font-size:15px;color:var(--ucred);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">
+                    <div style="font-family:'Alegreya Sans',sans-serif;font-weight:800;font-size:22px;color:var(--ucred);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">
                         &#128197; Jueves 16 Abril
                     </div>
-                    <div style="font-family:'Alegreya Sans',sans-serif;font-size:16px;color:rgba(255,255,255,0.85);line-height:1.7;">
+                    <div style="font-family:'Alegreya Sans',sans-serif;font-size:22px;color:rgba(255,255,255,0.85);line-height:1.7;">
                         &#8226; 4 Conferencias<br>
                         &#8226; DALIA: IA+SI<br>
                         &#8226; Ingenier&iacute;a social y deep fakes<br>
@@ -1477,10 +1528,10 @@
                 </div>
                 <!-- Day 2 -->
                 <div>
-                    <div style="font-family:'Alegreya Sans',sans-serif;font-weight:800;font-size:15px;color:var(--ucred);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">
+                    <div style="font-family:'Alegreya Sans',sans-serif;font-weight:800;font-size:22px;color:var(--ucred);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">
                         &#128197; Viernes 17 Abril
                     </div>
-                    <div style="font-family:'Alegreya Sans',sans-serif;font-size:16px;color:rgba(255,255,255,0.85);line-height:1.7;">
+                    <div style="font-family:'Alegreya Sans',sans-serif;font-size:22px;color:rgba(255,255,255,0.85);line-height:1.7;">
                         &#8226; 4 Conferencias<br>
                         &#8226; Ciberseguridad en Ecuador<br>
                         &#8226; Hackear la IA<br>
@@ -1494,14 +1545,14 @@
 
         <!-- Bottom info -->
         <div style="position:relative;padding:20px 50px 35px;display:flex;justify-content:space-between;align-items:flex-end;">
-            <div style="font-family:'Alegreya Sans',sans-serif;font-size:18px;color:rgba(255,255,255,0.8);">
+            <div style="font-family:'Alegreya Sans',sans-serif;font-size:24px;color:rgba(255,255,255,0.8);">
                 <strong style="color:white;">&#128205; Eco Campus Balzay</strong><br>
                 Auditorio C102 &middot; Cuenca
             </div>
             <div style="display:flex;align-items:center;gap:12px;">
                 <div style="text-align:center;">
                     <img src="png_exports/QR_Registro_CyberCon2026.png" style="width:110px;height:110px;border-radius:8px;border:3px solid white;">
-                    <div style="font-family:'Alegreya Sans',sans-serif;font-size:11px;color:rgba(255,255,255,0.8);margin-top:4px;font-weight:700;">Reg&iacute;strate aqu&iacute;</div>
+                    <div style="font-family:'Alegreya Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.8);margin-top:4px;font-weight:700;">Reg&iacute;strate aqu&iacute;</div>
                 </div>
             </div>
         </div>
