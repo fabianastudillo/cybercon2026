@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Afiches A3 - CyberCon 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;700;800;900&family=Alegreya:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ublue: #002856;
+            --ucred: #A51008;
+            --gris: #6F6F6F;
+            --blanco: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #e0e0e0;
+            font-family: 'Alegreya Sans', Arial, sans-serif;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 80px;
+        }
+
+        h1.label {
+            font-family: 'Alegreya Sans', sans-serif;
+            color: var(--ublue);
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 40px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--ucred);
+        }
+
+        /* ============================================
+           COMMON
+           ============================================ */
+        .chevron-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            opacity: 0.08;
+            background: repeating-linear-gradient(
+                135deg,
+                transparent,
+                transparent 80px,
+                rgba(255,255,255,0.1) 80px,
+                rgba(255,255,255,0.1) 160px
+            );
+        }
+
+        .geo-bottom {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 18px;
+            display: flex;
+        }
+        .geo-bottom span { flex: 1; }
+        .geo-bottom span:nth-child(1) { background: var(--ucred); }
+        .geo-bottom span:nth-child(2) { background: var(--blanco); }
+        .geo-bottom span:nth-child(3) { background: var(--gris); }
+        .geo-bottom span:nth-child(4) { background: var(--ucred); }
+
+        .grid-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        /* ============================================
+           AFICHE 1: PORTADA PRINCIPAL A3
+           2480 x 3508 px (portrait)
+           ============================================ */
+        .poster-cover {
+            width: 2480px;
+            height: 3508px;
+            position: relative;
+            overflow: hidden;
+            background: var(--ublue);
+            box-shadow: 0 15px 60px rgba(0,0,0,0.4);
+        }
+
+        .poster-cover .top-bar {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 80px 100px 60px;
+            border-bottom: 4px solid rgba(255,255,255,0.15);
+        }
+
+        .poster-cover .ucuenca-logo {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 900;
+            font-size: 72px;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        .poster-cover .faculty-label {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: 26px;
+            color: rgba(255,255,255,0.7);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-align: right;
+            line-height: 1.5;
+        }
+
+        .poster-cover .main-content {
+            position: relative;
+            padding: 80px 100px 60px;
+            text-align: center;
+        }
+
+        .poster-cover .event-badge {
+            display: inline-block;
+            background: var(--ucred);
+            color: white;
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 800;
+            font-size: 28px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            padding: 14px 55px;
+            margin-bottom: 50px;
+        }
+
+        .poster-cover .event-name {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 900;
+            font-size: 200px;
+            color: white;
+            line-height: 0.92;
+            letter-spacing: -3px;
+            margin-bottom: 20px;
+        }
+        .poster-cover .event-name .year {
+            font-size: 210px;
+            color: var(--ucred);
+        }
+
+        .poster-cover .cyber-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            margin: 50px 0;
+        }
+        .poster-cover .cyber-icon .line {
+            width: 160px;
+            height: 3px;
+            background: rgba(255,255,255,0.3);
+        }
+        .poster-cover .cyber-icon .shield {
+            width: 90px;
+            height: 90px;
+            border: 4px solid var(--ucred);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            color: var(--ucred);
+            background: rgba(165, 16, 8, 0.15);
+        }
+
+        .poster-cover .event-subtitle {
+            font-family: 'Alegreya', serif;
+            font-weight: 400;
+            font-size: 58px;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.35;
+            max-width: 1800px;
+            margin: 0 auto 60px;
+            font-style: italic;
+        }
+
+        /* Speakers strip */
+        .speakers-strip {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            padding: 50px 80px;
+        }
+
+        .speaker-chip {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 14px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 30px 20px;
+        }
+
+        .speaker-chip img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255,255,255,0.3);
+        }
+
+        .speaker-chip .chip-name {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 700;
+            font-size: 30px;
+            color: white;
+            line-height: 1.2;
+        }
+
+        .speaker-chip .chip-role {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: 24px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Date/location block */
+        .poster-cover .info-block {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            padding: 60px 100px;
+        }
+
+        .poster-cover .date-block {
+            background: rgba(255,255,255,0.1);
+            border: 3px solid rgba(255,255,255,0.25);
+            padding: 35px 80px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        .poster-cover .date-block .icon-cal {
+            font-size: 50px;
+        }
+        .poster-cover .date-block .date-text {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 700;
+            font-size: 48px;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        .poster-cover .location-text {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: 34px;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 1px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .poster-cover .location-text strong {
+            color: white;
+        }
+
+        .poster-cover .qr-box {
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .poster-cover .qr-box img {
+            width: 260px;
+            height: 260px;
+            border: 4px solid rgba(255,255,255,0.25);
+            border-radius: 14px;
+        }
+        .poster-cover .qr-box .qr-label {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: 22px;
+            color: rgba(255,255,255,0.7);
+            margin-top: 10px;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        /* Sponsors bar */
+        .poster-cover .sponsors-bar {
+            position: absolute;
+            bottom: 40px;
+            left: 100px;
+            right: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+        .poster-cover .sponsors-bar .sp-label {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: 24px;
+            color: rgba(255,255,255,0.35);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        .poster-cover .sponsors-bar .sp-divider {
+            width: 2px;
+            height: 55px;
+            background: rgba(255,255,255,0.15);
+        }
+
+        /* ============================================
+           AFICHE 2: CTF A3
+           2480 x 3508 px (portrait)
+           ============================================ */
+        .poster-ctf {
+            width: 2480px;
+            height: 3508px;
+            position: relative;
+            overflow: hidden;
+            background: var(--ublue);
+            box-shadow: 0 15px 60px rgba(0,0,0,0.4);
+        }
+
+        .poster-ctf .ctf-content {
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 100px;
+        }
+
+        .poster-ctf .ctf-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .poster-ctf .ctf-badge {
+            background: var(--ucred);
+            color: white;
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 800;
+            font-size: 28px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            padding: 16px 45px;
+        }
+
+        .poster-ctf .ctf-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .poster-ctf .ctf-title {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 900;
+            font-size: 320px;
+            color: white;
+            line-height: 0.85;
+            margin-bottom: 20px;
+            letter-spacing: 15px;
+        }
+
+        .poster-ctf .ctf-subtitle {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 700;
+            font-size: 60px;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 15px;
+            text-transform: uppercase;
+            margin-bottom: 70px;
+        }
+
+        .poster-ctf .ctf-desc {
+            font-family: 'Alegreya', serif;
+            font-size: 48px;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.4;
+            font-style: normal;
+            max-width: 1600px;
+            margin-bottom: 80px;
+        }
+
+        .poster-ctf .ctf-details {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .poster-ctf .ctf-detail {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: 40px;
+            color: white;
+        }
+
+        .poster-ctf .ctf-detail .icon-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--ucred);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+        }
+
+        .poster-ctf .qr-section {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            background: rgba(255,255,255,0.06);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 40px 60px;
+            margin-top: 20px;
+        }
+
+        .poster-ctf .qr-section img {
+            width: 240px;
+            height: 240px;
+            border-radius: 14px;
+            border: 4px solid rgba(255,255,255,0.3);
+        }
+
+        .poster-ctf .qr-section .qr-text {
+            font-family: 'Alegreya Sans', sans-serif;
+            color: white;
+        }
+        .poster-ctf .qr-section .qr-text .qr-cta {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .poster-ctf .qr-section .qr-text .qr-url {
+            font-size: 26px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Sponsors */
+        .poster-ctf .sponsors-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: auto;
+        }
+        .poster-ctf .sponsors-bar .sp-label {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: 24px;
+            color: rgba(255,255,255,0.35);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        .poster-ctf .sponsors-bar .sp-divider {
+            width: 2px;
+            height: 55px;
+            background: rgba(255,255,255,0.15);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         AFICHE 1: PORTADA PRINCIPAL A3
+         ============================================ -->
+    <h1 class="label">1. Portada Principal &mdash; A3 (2480 &times; 3508 px)</h1>
+
+    <div class="poster-cover" id="poster-cover">
+        <div class="chevron-bg"></div>
+
+        <!-- Top bar -->
+        <div class="top-bar">
+            <div class="ucuenca-logo"><span style="font-weight:900">U</span>CUENCA</div>
+            <div class="faculty-label">
+                Facultad de Ingenier&iacute;a<br>
+                Dpto. El&eacute;ctrica, Electr&oacute;nica<br>
+                y Telecomunicaciones
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <div class="event-badge">Simposio</div>
+            <div class="event-name">
+                CYBER<br>CON <span class="year">2026</span>
+            </div>
+
+            <div class="cyber-icon">
+                <div class="line"></div>
+                <div class="shield">&#x1F6E1;</div>
+                <div class="line"></div>
+            </div>
+
+            <div class="event-subtitle">
+                IA Generativa y Ciberseguridad:<br>
+                nuevos riesgos, nuevas defensas
+            </div>
+        </div>
+
+        <!-- Speakers strip -->
+        <div class="speakers-strip">
+            <div class="speaker-chip">
+                <img src="conferencistas/jorgemerchan_crop.png" alt="Jorge Merchán">
+                <div>
+                    <div class="chip-name">Jorge Merch&aacute;n</div>
+                    <div class="chip-role">CEDIA</div>
+                </div>
+            </div>
+            <div class="speaker-chip">
+                <img src="conferencistas/christianona.png" style="object-position:35% 15%;" alt="Christian Oña">
+                <div>
+                    <div class="chip-name">Christian O&ntilde;a</div>
+                    <div class="chip-role">Red Team Manager</div>
+                </div>
+            </div>
+            <div class="speaker-chip">
+                <img src="conferencistas/jessicamorales_crop.png" alt="Jessica Morales">
+                <div>
+                    <div class="chip-name">Jessica Morales</div>
+                    <div class="chip-role">Seguridad Bancaria</div>
+                </div>
+            </div>
+            <div class="speaker-chip">
+                <img src="conferencistas/christiancuenca.png" alt="Christian Cuenca">
+                <div>
+                    <div class="chip-name">Christian Cuenca</div>
+                    <div class="chip-role">Kushki</div>
+                </div>
+            </div>
+            <div class="speaker-chip">
+                <img src="conferencistas/fabianIniguez_crop.png" alt="Fabián Iñiguez">
+                <div>
+                    <div class="chip-name">Fabi&aacute;n I&ntilde;iguez</div>
+                    <div class="chip-role">Grupo RADICAL</div>
+                </div>
+            </div>
+            <div class="speaker-chip">
+                <img src="conferencistas/jorgemoya_crop.png" alt="Jorge Moya">
+                <div>
+                    <div class="chip-name">Jorge Moya</div>
+                    <div class="chip-role">Ironcybersec</div>
+                </div>
+            </div>
+            <div class="speaker-chip">
+                <img src="conferencistas/mymarcopazmino_crop.png" alt="Marco Pazmiño">
+                <div>
+                    <div class="chip-name">Marco A. Pazmi&ntilde;o</div>
+                    <div class="chip-role">Investigaci&oacute;n Forense</div>
+                </div>
+            </div>
+            <div class="speaker-chip">
+                <img src="conferencistas/andresrobles_crop.png" alt="Andrés Robles">
+                <div>
+                    <div class="chip-name">Andr&eacute;s Robles</div>
+                    <div class="chip-role">Red Team &amp; Pentesting</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Date, location, QR -->
+        <div class="info-block">
+            <div>
+                <div class="date-block">
+                    <span class="icon-cal">&#x1F4C5;</span>
+                    <span class="date-text">16&ndash;17 de abril, 2026</span>
+                </div>
+                <div class="location-text" style="margin-top:25px;">
+                    <strong>Universidad de Cuenca: Auditorio C-002 del Campus Balzay</strong>
+                </div>
+            </div>
+            <div class="qr-box">
+                <img src="png_exports/QR_Registro_CyberCon2026.png" alt="QR Registro">
+                <div class="qr-label">Reg&iacute;strate aqu&iacute;</div>
+            </div>
+        </div>
+
+        <!-- Sponsors -->
+        <div class="sponsors-bar">
+            <div class="sp-label">Organizan y auspician:</div>
+            <img src="logos/GrupoRadical/GRD_horizontal_v2_blanco.png" style="height:80px;object-fit:contain;">
+            <div class="sp-divider"></div>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <div style="font-family:'Alegreya Sans',sans-serif;font-weight:900;font-size:40px;color:#a01c18;">CC</div>
+                <div style="font-family:'Alegreya Sans',sans-serif;font-weight:800;font-size:20px;color:rgba(255,255,255,0.6);line-height:1.1;">CLUB CIBERSEGURIDAD<br><span style="font-weight:900;font-size:26px;color:white;">UCUENCA</span></div>
+            </div>
+            <div class="sp-divider"></div>
+            <img src="logos/cedia_blanco.png" style="height:60px;object-fit:contain;">
+            <div class="sp-divider"></div>
+            <img src="logos/IronCybersec/Blanco y Negro/logo_blancosinfondo.png" style="height:60px;object-fit:contain;">
+            <div class="sp-divider"></div>
+            <img src="logos/FernandoIllescas/FERNANDO ILLESCAS.png" style="height:50px;object-fit:contain;">
+            <div class="sp-divider"></div>
+            <div style="font-family:'Alegreya Sans',sans-serif;font-size:24px;color:rgba(255,255,255,0.4);">ucuenca.edu.ec</div>
+        </div>
+
+        <div class="geo-bottom">
+            <span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+
+    <!-- ============================================
+         AFICHE 2: CTF A3
+         ============================================ -->
+    <h1 class="label">6. CTF &mdash; Capture The Flag &mdash; A3 (2480 &times; 3508 px)</h1>
+
+    <div class="poster-ctf" id="poster-ctf">
+        <div class="grid-overlay"></div>
+
+        <div class="ctf-content">
+            <!-- Top -->
+            <div class="ctf-top">
+                <div style="font-family:'Alegreya Sans',sans-serif;font-weight:900;font-size:64px;color:white"><span>U</span>CUENCA</div>
+                <div style="display:flex;align-items:center;gap:35px;">
+                    <div class="ctf-badge">CYBERCON 2026</div>
+                    <img src="logos/GrupoRadical/GRD_horizontal_v2_blanco.png" style="height:70px;object-fit:contain;">
+                </div>
+            </div>
+
+            <!-- Main -->
+            <div class="ctf-main">
+                <div class="ctf-title">CTF</div>
+                <div class="ctf-subtitle">Capture The Flag</div>
+                <div class="ctf-desc">
+                    Pon a prueba tus habilidades en ciberseguridad<br>
+                    en nuestro desaf&iacute;o CTF
+                </div>
+
+                <div class="ctf-details">
+                    <div class="ctf-detail">
+                        <div class="icon-circle">&#128197;</div>
+                        <div>
+                            <strong>Viernes 17 de abril</strong><br>
+                            <span style="font-size:30px;color:rgba(255,255,255,0.6)">9:00 en adelante</span>
+                        </div>
+                    </div>
+                    <div class="ctf-detail">
+                        <div class="icon-circle">&#128205;</div>
+                        <div>
+                            <strong>Campus Balzay</strong><br>
+                            <span style="font-size:30px;color:rgba(255,255,255,0.6)">Universidad de Cuenca</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="qr-section">
+                    <img src="png_exports/QR_CTF_CyberCon2026.png" alt="QR CTF">
+                    <div class="qr-text">
+                        <div class="qr-cta">Reg&iacute;strate aqu&iacute;</div>
+                        <div class="qr-url">forms.cloud.microsoft/r/QMqTabkwGC</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sponsors -->
+            <div class="sponsors-bar">
+                <div class="sp-label">Organizan:</div>
+                <img src="logos/GrupoRadical/GRD_horizontal_v2_blanco.png" style="height:80px;object-fit:contain;">
+                <div class="sp-divider"></div>
+                <div style="display:flex;align-items:center;gap:14px;">
+                    <div style="font-family:'Alegreya Sans',sans-serif;font-weight:900;font-size:42px;color:#a01c18;">CC</div>
+                    <div>
+                        <div style="font-family:'Alegreya Sans',sans-serif;font-weight:800;font-size:20px;color:#a01c18;letter-spacing:1px;line-height:1;">CLUB CIBERSEGURIDAD</div>
+                        <div style="font-family:'Alegreya Sans',sans-serif;font-weight:900;font-size:28px;color:white;line-height:1;">UCUENCA</div>
+                    </div>
+                </div>
+                <div class="sp-divider"></div>
+                <img src="logos/cedia_blanco.png" style="height:60px;object-fit:contain;">
+                <div class="sp-divider"></div>
+                <img src="logos/IronCybersec/Blanco y Negro/logo_blancosinfondo.png" style="height:60px;object-fit:contain;">
+                <div class="sp-divider"></div>
+                <img src="logos/FernandoIllescas/FERNANDO ILLESCAS.png" style="height:50px;object-fit:contain;">
+            </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div style="position:absolute;bottom:0;left:0;right:0;display:flex;height:18px;">
+            <span style="flex:1;background:#F07D00"></span>
+            <span style="flex:1;background:var(--ucred)"></span>
+            <span style="flex:1;background:var(--gris)"></span>
+            <span style="flex:1;background:#F07D00"></span>
+        </div>
+    </div>
+
+</body>
+</html>

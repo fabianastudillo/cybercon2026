@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Assets Google Sites - UCuenca CyberCon 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f0f0;
+            font-family: 'Alegreya Sans', sans-serif;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+        h2 { color: #002856; font-size: 16px; letter-spacing: 2px; text-transform: uppercase; }
+        p.hint { color: #888; font-size: 13px; }
+
+        /* === LOGO (280x60) === */
+        .logo-asset {
+            width: 280px;
+            height: 60px;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+
+        .logo-asset .ucuenca {
+            font-family: 'Alegreya Sans', Arial, sans-serif;
+            font-size: 38px;
+            font-weight: 900;
+            color: #002856;
+            letter-spacing: 1px;
+            line-height: 1;
+        }
+
+        .logo-asset .ucuenca .u-letter {
+            font-weight: 900;
+        }
+
+        .logo-asset .ucuenca .cuenca-text {
+            font-weight: 700;
+        }
+
+        /* === BANNER (1600x400) === */
+        .banner-asset {
+            width: 1600px;
+            height: 400px;
+            background: #002856;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 0 100px;
+        }
+
+        .banner-chevron-bg {
+            position: absolute;
+            left: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.07;
+        }
+
+        .banner-left {
+            flex: 1;
+            z-index: 2;
+        }
+
+        .banner-badge {
+            display: inline-block;
+            background: #A51008;
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            padding: 6px 22px;
+            border-radius: 3px;
+            margin-bottom: 18px;
+        }
+
+        .banner-event-name {
+            font-family: 'Alegreya Sans', Arial, sans-serif;
+            font-size: 90px;
+            font-weight: 900;
+            color: white;
+            line-height: 0.92;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        .banner-event-name .year {
+            color: #A51008;
+        }
+
+        .banner-tagline {
+            font-family: 'Alegreya Sans', Arial, sans-serif;
+            font-size: 24px;
+            font-weight: 400;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.35;
+            margin-bottom: 24px;
+        }
+
+        .banner-tagline strong {
+            color: white;
+            font-weight: 700;
+        }
+
+        .banner-meta {
+            display: flex;
+            gap: 35px;
+            font-size: 18px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .banner-meta strong {
+            color: white;
+        }
+
+        .banner-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            z-index: 2;
+        }
+
+        .banner-logo {
+            font-family: 'Alegreya Sans', Arial, sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: white;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        .banner-red-line {
+            width: 200px;
+            height: 4px;
+            background: #A51008;
+        }
+
+        .banner-faculty {
+            font-family: 'Alegreya Sans', Arial, sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .banner-divider {
+            width: 2px;
+            height: 220px;
+            background: linear-gradient(to bottom, transparent, #A51008, transparent);
+            margin: 0 60px;
+            z-index: 2;
+        }
+
+        /* Decorative elements */
+        .geo-square {
+            position: absolute;
+            z-index: 1;
+        }
+        .geo-square.s1 { width: 14px; height: 14px; background: #A51008; top: 35px; right: 180px; opacity: 0.5; }
+        .geo-square.s2 { width: 10px; height: 10px; background: #6F6F6F; bottom: 50px; right: 250px; opacity: 0.4; }
+        .geo-square.s3 { width: 8px; height: 8px; background: #A51008; bottom: 35px; left: 500px; opacity: 0.3; }
+
+        .banner-bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(to right, #A51008 0%, #A51008 33%, #002856 33%, #002856 66%, #6F6F6F 66%, #6F6F6F 100%);
+        }
+
+        /* Corner chevrons */
+        .corner-deco {
+            position: absolute;
+            top: 25px;
+            left: 80px;
+            display: flex;
+            gap: 8px;
+            z-index: 1;
+            opacity: 0.25;
+        }
+
+        .mini-chev {
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 12px solid #A51008;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- === LOGO === -->
+    <h2>1. Logo (para "Add a logo")</h2>
+    <p class="hint">280 &times; 60 px &mdash; fondo transparente</p>
+    <div class="logo-asset" id="logo">
+        <div class="ucuenca">
+            <span class="u-letter">U</span><span class="cuenca-text">CUENCA</span>
+        </div>
+    </div>
+
+    <!-- === BANNER === -->
+    <h2>2. Banner (para "Add a banner image")</h2>
+    <p class="hint">1600 &times; 400 px</p>
+    <div class="banner-asset" id="banner">
+        <!-- BG chevron -->
+        <svg class="banner-chevron-bg" width="350" height="350" viewBox="0 0 200 200" fill="none">
+            <path d="M0 160 L100 50 L200 160" stroke="white" stroke-width="30" fill="none"/>
+            <path d="M0 195 L100 85 L200 195" stroke="white" stroke-width="20" fill="none"/>
+        </svg>
+
+        <!-- Decorative -->
+        <div class="geo-square s1"></div>
+        <div class="geo-square s2"></div>
+        <div class="geo-square s3"></div>
+        <div class="corner-deco">
+            <div class="mini-chev"></div>
+            <div class="mini-chev"></div>
+            <div class="mini-chev"></div>
+        </div>
+
+        <!-- Left: Event info -->
+        <div class="banner-left">
+            <div class="banner-badge">Simposio</div>
+            <div class="banner-event-name">
+                CYBER<br>CON <span class="year">2026</span>
+            </div>
+            <div class="banner-tagline">
+                <strong>IA Generativa y Ciberseguridad:</strong><br>
+                nuevos riesgos, nuevas defensas
+            </div>
+            <div class="banner-meta">
+                <span>&#128197; <strong>16 &ndash; 17 abril, 2026</strong></span>
+                <span>&#128205; <strong>Campus Balzay</strong> &middot; Cuenca</span>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="banner-divider"></div>
+
+        <!-- Right: UCuenca logo -->
+        <div class="banner-right">
+            <div class="banner-logo">
+                <span style="font-weight:900">U</span><span style="font-weight:700">CUENCA</span>
+            </div>
+            <div class="banner-red-line"></div>
+            <div class="banner-faculty">Ingenier&iacute;a</div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="banner-bottom-bar"></div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Díptico CyberCon 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;700;800;900&family=Alegreya:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ublue: #002856;
+            --ucred: #A51008;
+            --gris: #6F6F6F;
+            --blanco: #FFFFFF;
+            --ublue-light: #003a7a;
+            --gris-claro: #E8E8E8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page {
+            size: 297mm 210mm;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Alegreya Sans', Arial, sans-serif;
+            background: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            padding: 30px;
+        }
+
+        .page-label {
+            font-family: 'Alegreya Sans', sans-serif;
+            color: var(--ublue);
+            font-size: 18px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 20px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid var(--ucred);
+        }
+
+        /* Each page is A4 landscape */
+        .diptico-page {
+            width: 297mm;
+            height: 210mm;
+            display: flex;
+            position: relative;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+            overflow: hidden;
+        }
+
+        @media print {
+            body { background: none; padding: 0; gap: 0; }
+            .page-label { display: none; }
+            .diptico-page { box-shadow: none; }
+            .diptico-page + .page-label { page-break-before: always; }
+        }
+
+        /* Each panel is half the page */
+        .panel {
+            width: 148.5mm;
+            height: 210mm;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ============================================
+           EXTERIOR - Panel derecho: PORTADA
+           ============================================ */
+        .portada {
+            background: var(--ublue);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 0;
+        }
+
+        .portada .chevron-pattern {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            opacity: 0.06;
+            background: repeating-linear-gradient(
+                135deg,
+                transparent,
+                transparent 20px,
+                rgba(255,255,255,0.1) 20px,
+                rgba(255,255,255,0.1) 40px
+            );
+        }
+
+        .portada .grid-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 25px 25px;
+            pointer-events: none;
+        }
+
+        .portada-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 18mm 10mm 10mm;
+        }
+
+        .portada-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 3mm;
+        }
+
+        .portada-logo {
+            font-weight: 900;
+            font-size: 22px;
+            color: var(--blanco);
+            letter-spacing: 0.5px;
+        }
+
+        .portada-faculty {
+            font-size: 7.5px;
+            color: rgba(255,255,255,0.55);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-align: right;
+            line-height: 1.5;
+        }
+
+        .portada-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .portada-badge {
+            display: inline-block;
+            background: var(--ucred);
+            color: var(--blanco);
+            font-weight: 800;
+            font-size: 8px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            margin-bottom: 5mm;
+        }
+
+        .portada-event-name {
+            font-weight: 900;
+            font-size: 52px;
+            color: var(--blanco);
+            line-height: 0.92;
+            letter-spacing: -0.5px;
+            margin-bottom: 2mm;
+        }
+        .portada-event-name .year {
+            font-size: 56px;
+            color: var(--ucred);
+        }
+
+        .portada-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 4mm 0;
+        }
+        .portada-icon .line {
+            width: 40px;
+            height: 1.5px;
+            background: rgba(255,255,255,0.3);
+        }
+        .portada-icon .shield {
+            width: 32px;
+            height: 32px;
+            border: 2px solid var(--ucred);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--ucred);
+            background: rgba(165, 16, 8, 0.15);
+        }
+
+        .portada-subtitle {
+            font-family: 'Alegreya', serif;
+            font-style: italic;
+            font-size: 16px;
+            color: rgba(255,255,255,0.88);
+            line-height: 1.35;
+            max-width: 110mm;
+            margin: 0 auto 6mm;
+        }
+
+        .portada-date-block {
+            background: rgba(255,255,255,0.1);
+            border: 1.5px solid rgba(255,255,255,0.2);
+            padding: 8px 22px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 3mm;
+        }
+        .portada-date-block .icon-cal { font-size: 16px; }
+        .portada-date-block .date-text {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--blanco);
+            letter-spacing: 0.5px;
+        }
+
+        .portada-location {
+            font-size: 11px;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 0.5px;
+        }
+        .portada-location strong { color: var(--blanco); }
+
+        .portada-qr {
+            display: flex;
+            align-items: center;
+            gap: 8mm;
+            margin-top: 5mm;
+        }
+        .portada-qr img {
+            width: 22mm;
+            height: 22mm;
+            border: 2px solid rgba(255,255,255,0.15);
+            border-radius: 4px;
+        }
+        .portada-qr-text {
+            font-size: 9px;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 0.5px;
+        }
+
+        .portada-bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            display: flex;
+        }
+        .portada-bottom-bar span { flex: 1; }
+        .portada-bottom-bar span:nth-child(1) { background: var(--ucred); }
+        .portada-bottom-bar span:nth-child(2) { background: var(--blanco); }
+        .portada-bottom-bar span:nth-child(3) { background: var(--gris); }
+        .portada-bottom-bar span:nth-child(4) { background: var(--ucred); }
+
+        /* ============================================
+           EXTERIOR - Panel izquierdo: CONTRAPORTADA
+           ============================================ */
+        .contraportada {
+            background: var(--blanco);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contra-header {
+            background: var(--ublue);
+            padding: 6mm 8mm 5mm;
+            position: relative;
+        }
+        .contra-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--ucred);
+        }
+        .contra-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .contra-header .logo-sm {
+            font-weight: 900;
+            font-size: 16px;
+            color: var(--blanco);
+        }
+        .contra-header .badge-sm {
+            background: var(--ucred);
+            color: var(--blanco);
+            font-weight: 800;
+            font-size: 7px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 3px 10px;
+        }
+        .contra-header h3 {
+            font-weight: 900;
+            font-size: 18px;
+            color: var(--blanco);
+            margin-top: 2mm;
+        }
+        .contra-header h3 span { color: var(--ucred); }
+
+        .ponentes-list {
+            padding: 4mm 7mm;
+            flex: 1;
+        }
+
+        .ponente-item {
+            padding: 2.5mm 0;
+            border-bottom: 0.5px solid var(--gris-claro);
+        }
+        .ponente-item:last-child { border-bottom: none; }
+
+        .ponente-dia {
+            font-weight: 700;
+            font-size: 6.5px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--ucred);
+            margin-bottom: 0.5mm;
+        }
+
+        .ponente-nombre {
+            font-weight: 800;
+            font-size: 10px;
+            color: var(--ublue);
+            line-height: 1.25;
+        }
+
+        .ponente-tema {
+            font-family: 'Alegreya', serif;
+            font-style: italic;
+            font-size: 8px;
+            color: var(--gris);
+            line-height: 1.3;
+            margin-top: 0.3mm;
+        }
+
+        /* Sponsors section */
+        .contra-sponsors {
+            background: #f5f5f5;
+            padding: 4mm 7mm;
+            border-top: 1px solid var(--gris-claro);
+        }
+        .contra-sponsors-label {
+            font-size: 7px;
+            color: var(--gris);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2mm;
+            text-align: center;
+        }
+        .sponsors-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5mm;
+            flex-wrap: wrap;
+        }
+        .sponsors-row .sp-logo-text {
+            font-weight: 900;
+            font-size: 10px;
+            color: var(--ublue);
+        }
+        .sponsors-row .sp-divider {
+            width: 0.5px;
+            height: 12px;
+            background: #ccc;
+        }
+        .sponsors-row img {
+            height: 16px;
+            object-fit: contain;
+        }
+        .sponsors-row .cc-logo {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+        .sponsors-row .cc-logo .cc-letters {
+            font-weight: 900;
+            font-size: 9px;
+            color: #a01c18;
+        }
+        .sponsors-row .cc-logo .cc-text {
+            font-weight: 800;
+            font-size: 5px;
+            color: var(--gris);
+            line-height: 1.1;
+        }
+        .sponsors-row .cc-logo .cc-text span {
+            font-weight: 900;
+            font-size: 6px;
+            color: var(--ublue);
+        }
+        .sponsors-row .cedia-text {
+            font-weight: 700;
+            font-size: 15px;
+            color: #121A54;
+        }
+
+        .contra-footer {
+            background: var(--ublue);
+            padding: 3mm 7mm;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .contra-footer .loc {
+            font-size: 8px;
+            color: rgba(255,255,255,0.6);
+        }
+        .contra-footer .web {
+            font-weight: 700;
+            font-size: 8px;
+            color: var(--blanco);
+            letter-spacing: 0.5px;
+        }
+
+        /* ============================================
+           INTERIOR - Paneles de Agenda
+           ============================================ */
+        .agenda-panel {
+            background: var(--blanco);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .agenda-panel-header {
+            background: var(--ublue);
+            padding: 5mm 7mm 4mm;
+            position: relative;
+        }
+        .agenda-panel-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--ucred);
+        }
+
+        .agenda-panel-header .ah-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .agenda-panel-header .logo-sm {
+            font-weight: 900;
+            font-size: 14px;
+            color: var(--blanco);
+        }
+        .agenda-panel-header .day-badge {
+            background: var(--ucred);
+            color: var(--blanco);
+            font-weight: 800;
+            font-size: 7px;
+            padding: 3px 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .agenda-panel-header h2 {
+            font-weight: 900;
+            font-size: 20px;
+            color: var(--blanco);
+            line-height: 1.1;
+            margin-top: 2mm;
+        }
+        .agenda-panel-header h2 span { color: var(--ucred); }
+        .agenda-panel-header .sub {
+            font-size: 7.5px;
+            color: rgba(255,255,255,0.55);
+            margin-top: 1mm;
+            letter-spacing: 0.5px;
+        }
+
+        .deco-bar {
+            display: flex;
+            height: 3px;
+        }
+        .deco-bar span { flex: 1; }
+        .deco-bar span:nth-child(odd) { background: var(--ucred); }
+        .deco-bar span:nth-child(even) { background: var(--ublue); }
+
+        .agenda-panel-body {
+            padding: 3mm 7mm;
+            flex: 1;
+        }
+
+        .ag-item {
+            display: flex;
+            gap: 3mm;
+            padding: 2.2mm 0;
+            border-bottom: 0.5px solid var(--gris-claro);
+            align-items: flex-start;
+        }
+        .ag-item:last-child { border-bottom: none; }
+
+        .ag-time {
+            min-width: 24mm;
+            font-weight: 800;
+            font-size: 8.5px;
+            color: var(--ublue);
+            padding-top: 0.3mm;
+            white-space: nowrap;
+        }
+
+        .ag-info { flex: 1; }
+
+        .ag-type {
+            font-weight: 800;
+            font-size: 6px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ucred);
+            margin-bottom: 0.3mm;
+        }
+        .ag-type.break-t { color: var(--gris); }
+
+        .ag-topic {
+            font-weight: 700;
+            font-size: 9px;
+            color: var(--ublue);
+            line-height: 1.3;
+        }
+
+        .ag-speaker {
+            font-family: 'Alegreya', serif;
+            font-style: italic;
+            font-size: 7.5px;
+            color: var(--gris);
+            margin-top: 0.3mm;
+            line-height: 1.25;
+        }
+
+        .ag-break {
+            background: #f8f8f8;
+            margin: 0 -7mm;
+            padding: 2mm 7mm !important;
+        }
+        .ag-break .ag-topic {
+            color: var(--gris);
+            font-weight: 400;
+        }
+
+        .ag-workshop {
+            background: linear-gradient(135deg, rgba(165,16,8,0.08), rgba(165,16,8,0.03));
+            margin: 0.5mm -7mm;
+            padding: 3mm 7mm !important;
+            border-left: 3px solid var(--ucred);
+        }
+        .ag-workshop .ag-type { color: rgba(255,255,255,0.7); }
+
+        .agenda-panel-footer {
+            background: var(--ublue);
+            padding: 2.5mm 7mm;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .agenda-panel-footer .loc {
+            font-size: 7px;
+            color: rgba(255,255,255,0.6);
+        }
+        .agenda-panel-footer .web {
+            font-weight: 700;
+            font-size: 7px;
+            color: var(--blanco);
+            letter-spacing: 0.5px;
+        }
+
+        /* Fold line indicator (screen only) */
+        .fold-line {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 0;
+            height: 100%;
+            border-left: 1px dashed rgba(0,0,0,0.15);
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        @media print {
+            .fold-line { display: none; }
+        }
+
+        /* Conversatorio special */
+        .ag-conversatorio {
+            background: linear-gradient(135deg, rgba(0,40,86,0.06), rgba(165,16,8,0.04));
+            margin: 0.5mm -7mm;
+            padding: 2.5mm 7mm !important;
+            border-left: 3px solid var(--ublue);
+        }
+        .ag-conversatorio .ag-type { color: var(--ublue); }
+
+        /* QR en contraportada */
+        .contra-qr-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5mm;
+            padding: 3mm 7mm;
+            border-top: 0.5px solid var(--gris-claro);
+        }
+        .contra-qr-section img {
+            width: 18mm;
+            height: 18mm;
+            border: 1.5px solid rgba(0,40,86,0.15);
+            border-radius: 3px;
+        }
+        .contra-qr-section .qr-label {
+            font-size: 7.5px;
+            color: var(--gris);
+            text-align: center;
+            line-height: 1.4;
+        }
+        .contra-qr-section .qr-label strong {
+            color: var(--ublue);
+            font-size: 8.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+         CARA EXTERIOR (Contraportada izq. | Portada der.)
+         Al doblar: portada queda al frente, contraportada atrás
+         ========================================== -->
+    <div class="page-label">Cara Exterior (Imprimir lado 1)</div>
+
+    <div class="diptico-page" id="exterior">
+        <div class="fold-line"></div>
+
+        <!-- PANEL IZQUIERDO: CONTRAPORTADA (queda atrás al doblar) -->
+        <div class="panel contraportada">
+            <div class="contra-header">
+                <div class="contra-header-top">
+                    <div class="logo-sm"><span>U</span>CUENCA</div>
+                    <div class="badge-sm">CYBERCON 2026</div>
+                </div>
+                <h3>Nuestros <span>Ponentes</span></h3>
+            </div>
+
+            <div class="ponentes-list">
+                <!-- Día 1 -->
+                <div class="ponente-item">
+                    <div class="ponente-dia">D&iacute;a 1 &middot; Conferencia</div>
+                    <div class="ponente-nombre">Ing. Jorge Merch&aacute;n, Mgtr.</div>
+                    <div class="ponente-tema">L&iacute;der de seguridad de la informaci&oacute;n de CEDIA &mdash; DALIA: La Fuerza Colaborativa que Protege el Sector Acad&eacute;mico</div>
+                </div>
+                <div class="ponente-item">
+                    <div class="ponente-dia">D&iacute;a 1 &middot; Conferencia</div>
+                    <div class="ponente-nombre">Ing. Christian O&ntilde;a, MSc.</div>
+                    <div class="ponente-tema">Red Team Manager &mdash; Ingenier&iacute;a social avanzada, deep fake en tiempo real</div>
+                </div>
+                <div class="ponente-item">
+                    <div class="ponente-dia">D&iacute;a 1 &middot; Conferencia</div>
+                    <div class="ponente-nombre">Ing. Jessica Morales, Mgtr.</div>
+                    <div class="ponente-tema">Oficial de Seguridad de la Informaci&oacute;n &mdash; Seguridad de Datos en el Sector Bancario</div>
+                </div>
+                <div class="ponente-item">
+                    <div class="ponente-dia">D&iacute;a 1 &middot; Conferencia</div>
+                    <div class="ponente-nombre">Ing. Christian Cuenca, MSc.</div>
+                    <div class="ponente-tema">Director de Seguridad de la Informaci&oacute;n en Kushki &mdash; Riesgos de IA en pasarelas de pagos</div>
+                </div>
+                <!-- Día 2 -->
+                <div class="ponente-item">
+                    <div class="ponente-dia">D&iacute;a 2 &middot; Conferencia</div>
+                    <div class="ponente-nombre">Ing. Fabi&aacute;n I&ntilde;iguez, Mgtr.</div>
+                    <div class="ponente-tema">Gerente de Operaciones, Grupo RADICAL &mdash; Tras la huella del Hacker</div>
+                </div>
+                <div class="ponente-item">
+                    <div class="ponente-dia">D&iacute;a 2 &middot; Conferencia</div>
+                    <div class="ponente-nombre">Ing. Jorge Moya, Mgtr.</div>
+                    <div class="ponente-tema">CTO en Ironcybersec &mdash; Hackear la IA: Seguridad para la Era de la IA</div>
+                </div>
+                <div class="ponente-item">
+                    <div class="ponente-dia">D&iacute;a 2 &middot; Conferencia</div>
+                    <div class="ponente-nombre">My. Marco A. Pazmi&ntilde;o</div>
+                    <div class="ponente-tema">Asesor Estrat&eacute;gico Operacional &mdash; Errores cr&iacute;ticos en manejo de evidencia digital</div>
+                </div>
+                <div class="ponente-item">
+                    <div class="ponente-dia">D&iacute;a 2 &middot; Conferencia</div>
+                    <div class="ponente-nombre">Dr. Andr&eacute;s Robles</div>
+                    <div class="ponente-tema">Profesional de Seguridad de la Informaci&oacute;n &mdash; Red Team 2.0: Pentests con Kali y Claude MCP</div>
+                </div>
+            </div>
+
+            <div class="contra-qr-section">
+                <div>
+                    <img src="png_exports/QR_Registro_CyberCon2026.png" alt="QR Registro">
+                    <div class="qr-label"><strong>Registro</strong><br>Conferencias</div>
+                </div>
+                <div>
+                    <img src="png_exports/QR_CTF_CyberCon2026.png" alt="QR CTF">
+                    <div class="qr-label"><strong>Registro</strong><br>CTF</div>
+                </div>
+            </div>
+
+            <div class="contra-sponsors">
+                <div class="contra-sponsors-label">Organizan y auspician</div>
+                <div class="sponsors-row">
+                    <div class="sp-logo-text">UCUENCA</div>
+                    <div class="sp-divider"></div>
+                    <img src="logos/GrupoRadical/GRD_horizontal_color.png" alt="GRD">
+                    <div class="sp-divider"></div>
+                    <div class="cc-logo">
+                        <div class="cc-letters">CC</div>
+                        <div class="cc-text">CLUB CIBERSEGURIDAD<br><span>UCUENCA</span></div>
+                    </div>
+                    <div class="sp-divider"></div>
+                    <img src="logos/cedia_azul.png" style="height:15px;object-fit:contain;" alt="CEDIA">
+                    <div class="sp-divider"></div>
+                    <img src="logos/FernandoIllescas/FERNANDO ILLESCAS 1.png" alt="Fernando Illescas">
+                </div>
+            </div>
+
+            <div class="contra-footer">
+                <div class="loc">Campus Balzay &middot; Cuenca, Ecuador</div>
+                <div class="web">ucuenca.edu.ec</div>
+            </div>
+        </div>
+
+        <!-- PANEL DERECHO: PORTADA (queda al frente al doblar) -->
+        <div class="panel portada">
+            <div class="chevron-pattern"></div>
+            <div class="grid-overlay"></div>
+            <div class="portada-content">
+                <div class="portada-top">
+                    <div class="portada-logo"><span style="font-weight:900">U</span>CUENCA</div>
+                    <div class="portada-faculty">
+                        Facultad de Ingenier&iacute;a<br>
+                        Dpto. El&eacute;ctrica, Electr&oacute;nica<br>
+                        y Telecomunicaciones
+                    </div>
+                </div>
+
+                <div class="portada-main">
+                    <div class="portada-badge">Simposio</div>
+                    <div class="portada-event-name">
+                        CYBER<br>CON <span class="year">2026</span>
+                    </div>
+
+                    <div class="portada-icon">
+                        <div class="line"></div>
+                        <div class="shield">&#x1F6E1;</div>
+                        <div class="line"></div>
+                    </div>
+
+                    <div class="portada-subtitle">
+                        IA Generativa y Ciberseguridad:<br>
+                        nuevos riesgos, nuevas defensas
+                    </div>
+
+                    <div class="portada-date-block">
+                        <span class="icon-cal">&#x1F4C5;</span>
+                        <span class="date-text">16 &ndash; 17 de abril, 2026</span>
+                    </div>
+
+                    <div class="portada-location">
+                        <strong>Campus Balzay</strong> &middot; Auditorio C102 &middot; Cuenca, Ecuador
+                    </div>
+
+                    <div class="portada-qr">
+                        <img src="png_exports/QR_Registro_CyberCon2026.png" alt="QR Registro">
+                        <div class="portada-qr-text">Escanea para<br>registrarte</div>
+                    </div>
+                </div>
+            </div>
+            <div class="portada-bottom-bar">
+                <span></span><span></span><span></span><span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         CARA INTERIOR (Agenda Día 1 izq. | Agenda Día 2 der.)
+         ========================================== -->
+    <div class="page-label">Cara Interior (Imprimir lado 2)</div>
+
+    <div class="diptico-page" id="interior">
+        <div class="fold-line"></div>
+
+        <!-- PANEL IZQUIERDO: AGENDA DÍA 1 -->
+        <div class="panel agenda-panel">
+            <div class="agenda-panel-header">
+                <div class="ah-top">
+                    <div class="logo-sm"><span style="font-weight:900">U</span>CUENCA</div>
+                    <div class="day-badge">D&Iacute;A 1</div>
+                </div>
+                <h2>Jueves, <span>16 de abril</span></h2>
+                <div class="sub">Campus Balzay &middot; Auditorio C102 &middot; Cuenca</div>
+            </div>
+
+            <div class="deco-bar">
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+            </div>
+
+            <div class="agenda-panel-body">
+                <div class="ag-item">
+                    <div class="ag-time">8h30 &ndash; 9h00</div>
+                    <div class="ag-info">
+                        <div class="ag-topic">Registro de participantes</div>
+                    </div>
+                </div>
+
+                <div class="ag-item">
+                    <div class="ag-time">9h00 &ndash; 9h30</div>
+                    <div class="ag-info">
+                        <div class="ag-type">Inauguraci&oacute;n</div>
+                        <div class="ag-topic">Apertura oficial del evento</div>
+                        <div class="ag-speaker">Dra. Elina &Aacute;vila, Decana (e) &middot; Dr. Fabi&aacute;n Astudillo, Coord.</div>
+                    </div>
+                </div>
+
+                <div class="ag-item">
+                    <div class="ag-time">9h30 &ndash; 10h15</div>
+                    <div class="ag-info">
+                        <div class="ag-type">Conferencia</div>
+                        <div class="ag-topic">DALIA: La Fuerza Colaborativa que Protege el Sector Acad&eacute;mico (IA+SI)</div>
+                        <div class="ag-speaker">Ing. Jorge Merch&aacute;n, Mgtr. &ndash; CEDIA</div>
+                    </div>
+                </div>
+
+                <div class="ag-item">
+                    <div class="ag-time">10h15 &ndash; 11h00</div>
+                    <div class="ag-info">
+                        <div class="ag-type">Conferencia</div>
+                        <div class="ag-topic">Ingenier&iacute;a social avanzada, deep fake en tiempo real</div>
+                        <div class="ag-speaker">Ing. Christian O&ntilde;a, MSc. &ndash; Red Team Manager</div>
+                    </div>
+                </div>
+
+                <div class="ag-item ag-break">
+                    <div class="ag-time">11h00 &ndash; 11h30</div>
+                    <div class="ag-info">
+                        <div class="ag-type break-t">Receso</div>
+                        <div class="ag-topic">&#9749; Coffee Break</div>
+                    </div>
+                </div>
+
+                <div class="ag-item">
+                    <div class="ag-time">11h30 &ndash; 12h15</div>
+                    <div class="ag-info">
+                        <div class="ag-type">Conferencia</div>
+                        <div class="ag-topic">Seguridad de Datos: Fortaleciendo la Confianza en el Sector Bancario</div>
+                        <div class="ag-speaker">Ing. Jessica Morales, Mgtr.</div>
+                    </div>
+                </div>
+
+                <div class="ag-item">
+                    <div class="ag-time">12h15 &ndash; 13h00</div>
+                    <div class="ag-info">
+                        <div class="ag-type">Conferencia</div>
+                        <div class="ag-topic">Riesgos de IA en las pasarelas de pagos</div>
+                        <div class="ag-speaker">Ing. Christian Cuenca, MSc. &ndash; Kushki</div>
+                    </div>
+                </div>
+
+                <div class="ag-item ag-break">
+                    <div class="ag-time">13h00 &ndash; 15h00</div>
+                    <div class="ag-info">
+                        <div class="ag-type break-t">Receso</div>
+                        <div class="ag-topic">&#127869; Almuerzo libre</div>
+                    </div>
+                </div>
+
+                <div class="ag-item ag-workshop">
+                    <div class="ag-time">15h00 &ndash; 18h00</div>
+                    <div class="ag-info">
+                        <div class="ag-type">Taller Pr&aacute;ctico</div>
+                        <div class="ag-topic">Dise&ntilde;o de campa&ntilde;as de phishing: de cero a bypass de 2FA</div>
+                        <div class="ag-speaker">Facilitador: Ing. Cristian O&ntilde;a &middot; Aula C107</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="agenda-panel-footer">
+                <div class="loc">Campus Balzay &middot; Cuenca</div>
+                <div class="web">ucuenca.edu.ec</div>
+            </div>
+        </div>
+
+        <!-- PANEL DERECHO: AGENDA DÍA 2 -->
+        <div class="panel agenda-panel">
+            <div class="agenda-panel-header">
+                <div class="ah-top">
+                    <div class="logo-sm"><span style="font-weight:900">U</span>CUENCA</div>
+                    <div class="day-badge">D&Iacute;A 2</div>
+                </div>
+                <h2>Viernes, <span>17 de abril</span></h2>
+                <div class="sub">Campus Balzay &middot; Auditorio C102 &middot; Cuenca</div>
+            </div>
+
+            <div class="deco-bar">
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+            </div>
+
+            <div class="agenda-panel-body">
+                <div class="ag-item">
+                    <div class="ag-time">8h30 &ndash; 9h00</div>
+                    <div class="ag-info">
+                        <div class="ag-topic">Registro de participantes al CTF</div>
+                    </div>
+                </div>
+
+                <div class="ag-item">
+                    <div class="ag-time">9h00 &ndash; 9h30</div>
+                    <div class="ag-info">
+                        <div class="ag-type">Inauguraci&oacute;n CTF</div>
+                        <div class="ag-topic">Bienvenida e inauguraci&oacute;n del evento CTF</div>
+                        <div class="ag-speaker">Ing. Fabi&aacute;n I&ntilde;iguez, Mgtr. &ndash; Grupo Radical</div>
+                    </div>
+                </div>
+
+                <div class="ag-item">
+                    <div class="ag-time">9h30 &ndash; 10h15</div>
+                    <div class="ag-info">
+                        <div class="ag-type">Conferencia</div>
+                        <div class="ag-topic">Tras la huella del Hacker &ndash; Ciberseguridad en el Ecuador</div>
+                        <div class="ag-speaker">Ing. Fabi&aacute;n I&ntilde;iguez, Mgtr. &ndash; Grupo Radical</div>
+                    </div>
+                </div>
+
+                <div class="ag-item">
+                    <div class="ag-time">10h15 &ndash; 11h00</div>
+                    <div class="ag-info">
+                        <div class="ag-type">Conferencia</div>
+                        <div class="ag-topic">Hackear la IA: Seguridad para la Era de la Inteligencia Artificial</div>
+                        <div class="ag-speaker">Ing. Jorge Moya, Mgtr. &ndash; CTO Ironcybersec</div>
+                    </div>
+                </div>
+
+                <div class="ag-item ag-break">
+                    <div class="ag-time">11h00 &ndash; 11h30</div>
+                    <div class="ag-info">
+                        <div class="ag-type break-t">Receso</div>
+                        <div class="ag-topic">&#9749; Coffee Break</div>
+                    </div>
+                </div>
+
+                <div class="ag-item">
+                    <div class="ag-time">11h30 &ndash; 12h15</div>
+                    <div class="ag-info">
+                        <div class="ag-type">Conferencia</div>
+                        <div class="ag-topic">Errores cr&iacute;ticos en el manejo de evidencia digital</div>
+                        <div class="ag-speaker">My. Marco A. Pazmi&ntilde;o &ndash; Asesor Estrat&eacute;gico</div>
+                    </div>
+                </div>
+
+                <div class="ag-item">
+                    <div class="ag-time">12h15 &ndash; 13h00</div>
+                    <div class="ag-info">
+                        <div class="ag-type">Conferencia</div>
+                        <div class="ag-topic">Red Team 2.0: Automatizando Pentests con Kali y Claude MCP</div>
+                        <div class="ag-speaker">Dr. Andr&eacute;s Robles &ndash; Profesional de Seguridad</div>
+                    </div>
+                </div>
+
+                <div class="ag-item ag-conversatorio">
+                    <div class="ag-time">13h00 &ndash; 13h30</div>
+                    <div class="ag-info">
+                        <div class="ag-type">Conversatorio</div>
+                        <div class="ag-topic">&#128172; Conversatorio con los especialistas</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="agenda-panel-footer">
+                <div class="loc">Campus Balzay &middot; Cuenca</div>
+                <div class="web">ucuenca.edu.ec</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

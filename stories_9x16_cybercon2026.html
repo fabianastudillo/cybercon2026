@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberCon 2026 - Stories 9:16</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;700;800;900&family=Alegreya:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ublue: #002856;
+            --ucred: #A51008;
+            --gris: #6F6F6F;
+            --blanco: #FFFFFF;
+            --ublue-light: #003a7a;
+            --gris-claro: #E8E8E8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #f0f0f0;
+            font-family: 'Alegreya Sans', Arial Narrow, sans-serif;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 60px;
+        }
+
+        h1.section-title {
+            font-family: 'Alegreya Sans', sans-serif;
+            color: var(--ublue);
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 40px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--ucred);
+        }
+
+        /* ============================================
+           BASE STORY CARD (1080x1920 = 9:16)
+           ============================================ */
+        .story-card {
+            width: 1080px;
+            height: 1920px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Chevron pattern background */
+        .chevron-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            opacity: 0.08;
+            background: repeating-linear-gradient(
+                135deg,
+                transparent,
+                transparent 40px,
+                rgba(255,255,255,0.1) 40px,
+                rgba(255,255,255,0.1) 80px
+            );
+        }
+
+        /* Grid overlay */
+        .grid-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        /* Bottom bar decoration */
+        .bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 14px;
+            display: flex;
+        }
+        .bottom-bar span { flex: 1; }
+        .bottom-bar span:nth-child(1) { background: var(--ucred); }
+        .bottom-bar span:nth-child(2) { background: var(--blanco); }
+        .bottom-bar span:nth-child(3) { background: var(--gris); }
+        .bottom-bar span:nth-child(4) { background: var(--ucred); }
+
+        /* Deco chevrons horizontal */
+        .deco-chevrons {
+            display: flex;
+            gap: 0;
+            height: 8px;
+        }
+        .deco-chevrons span { flex: 1; }
+        .deco-chevrons span:nth-child(odd) { background: var(--ucred); }
+        .deco-chevrons span:nth-child(even) { background: var(--ublue); }
+
+        /* ============================================
+           1. PORTADA PRINCIPAL (9:16)
+           ============================================ */
+        .story-portada {
+            background: var(--ublue);
+        }
+
+        .story-portada .top-bar {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px 60px 35px;
+            border-bottom: 3px solid rgba(255,255,255,0.15);
+        }
+
+        .ucuenca-logo {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 900;
+            font-size: 62px;
+            color: var(--blanco);
+            letter-spacing: 1px;
+        }
+
+        .faculty-label {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: 22px;
+            color: rgba(255,255,255,0.7);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: right;
+            line-height: 1.5;
+        }
+
+        .story-portada .main-content {
+            position: relative;
+            padding: 80px 60px 40px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .event-badge {
+            display: inline-block;
+            background: var(--ucred);
+            color: var(--blanco);
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 800;
+            font-size: 24px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            padding: 12px 40px;
+            margin-bottom: 40px;
+        }
+
+        .event-name {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 900;
+            font-size: 156px;
+            color: var(--blanco);
+            line-height: 0.95;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+        }
+        .event-name .year {
+            font-size: 164px;
+            color: var(--ucred);
+        }
+
+        .cyber-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin: 35px 0;
+        }
+        .cyber-icon .line {
+            width: 100px;
+            height: 2px;
+            background: rgba(255,255,255,0.3);
+        }
+        .cyber-icon .shield {
+            width: 60px;
+            height: 60px;
+            border: 3px solid var(--ucred);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            color: var(--ucred);
+            background: rgba(165, 16, 8, 0.15);
+        }
+
+        .event-subtitle {
+            font-family: 'Alegreya', serif;
+            font-weight: 400;
+            font-size: 50px;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.35;
+            max-width: 950px;
+            margin: 0 auto 50px;
+            font-style: italic;
+        }
+
+        .date-block {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.25);
+            padding: 22px 50px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .date-block .icon-cal {
+            font-size: 44px;
+        }
+        .date-block .date-text {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 700;
+            font-size: 42px;
+            color: var(--blanco);
+            letter-spacing: 1px;
+        }
+
+        .location-text {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: 28px;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 1px;
+            margin-top: 15px;
+            text-align: center;
+        }
+        .location-text strong {
+            color: var(--blanco);
+        }
+
+        /* ============================================
+           2 & 3. AGENDA (9:16)
+           ============================================ */
+        .story-agenda {
+            background: var(--blanco);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .agenda-header {
+            background: var(--ublue);
+            padding: 40px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        .agenda-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--ucred);
+        }
+
+        .agenda-header .logo-text {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 900;
+            font-size: 52px;
+            color: var(--blanco);
+        }
+
+        .agenda-header .day-badge {
+            background: var(--ucred);
+            color: var(--blanco);
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 800;
+            font-size: 24px;
+            padding: 14px 35px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .agenda-title-bar {
+            background: var(--ublue);
+            padding: 0 60px 35px;
+            text-align: left;
+        }
+        .agenda-title-bar h2 {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 900;
+            font-size: 66px;
+            color: var(--blanco);
+            line-height: 1.1;
+        }
+        .agenda-title-bar h2 span {
+            color: var(--ucred);
+        }
+        .agenda-title-bar p {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: 24px;
+            color: rgba(255,255,255,0.65);
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+
+        .agenda-body {
+            padding: 35px 60px 40px;
+            flex: 1;
+        }
+
+        .agenda-item {
+            display: flex;
+            gap: 25px;
+            padding: 22px 0;
+            border-bottom: 1px solid var(--gris-claro);
+            align-items: flex-start;
+        }
+        .agenda-item:last-child {
+            border-bottom: none;
+        }
+
+        .agenda-time {
+            min-width: 195px;
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 800;
+            font-size: 26px;
+            color: var(--ublue);
+            padding-top: 2px;
+            white-space: nowrap;
+        }
+
+        .agenda-info { flex: 1; }
+
+        .agenda-type {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 800;
+            font-size: 17px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--ucred);
+            margin-bottom: 4px;
+        }
+        .agenda-type.break-type { color: var(--gris); }
+
+        .agenda-topic {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 700;
+            font-size: 28px;
+            color: var(--ublue);
+            line-height: 1.3;
+        }
+
+        .agenda-speaker {
+            font-family: 'Alegreya', serif;
+            font-size: 24px;
+            color: var(--gris);
+            margin-top: 3px;
+            font-style: italic;
+        }
+
+        .break-item {
+            background: #f8f8f8;
+            margin: 0 -60px;
+            padding: 18px 60px !important;
+            border-bottom: 1px solid var(--gris-claro) !important;
+        }
+        .break-item .agenda-topic {
+            color: var(--gris);
+            font-weight: 400;
+            font-size: 26px;
+        }
+
+        .workshop-highlight {
+            background: linear-gradient(135deg, var(--ucred), #c41e10);
+            margin: 5px -60px;
+            padding: 25px 60px !important;
+            border-bottom: none !important;
+        }
+        .workshop-highlight .agenda-type { color: rgba(255,255,255,0.7); }
+        .workshop-highlight .agenda-topic { color: var(--blanco); }
+        .workshop-highlight .agenda-speaker { color: rgba(255,255,255,0.8); }
+        .workshop-highlight .agenda-time { color: var(--blanco); }
+
+        .agenda-footer {
+            background: var(--ublue);
+            padding: 25px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .agenda-footer .loc {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: 22px;
+            color: rgba(255,255,255,0.7);
+        }
+        .agenda-footer .web {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            color: var(--blanco);
+            letter-spacing: 1px;
+        }
+
+        /* ============================================
+           5. PONENTES DESTACADOS (9:16)
+           ============================================ */
+        .story-speakers {
+            background: var(--blanco);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .speakers-header {
+            background: var(--ublue);
+            padding: 40px 60px;
+            position: relative;
+        }
+        .speakers-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--ucred);
+        }
+        .speakers-header .sh-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .speakers-header h2 {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 900;
+            font-size: 62px;
+            color: var(--blanco);
+            margin-top: 12px;
+        }
+        .speakers-header h2 span { color: var(--ucred); }
+
+        .speakers-list {
+            flex: 1;
+            padding: 20px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0;
+        }
+
+        .speaker-card {
+            padding: 22px 0;
+            border-bottom: 1px solid var(--gris-claro);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 25px;
+        }
+        .speaker-card:last-child { border-bottom: none; }
+
+        .speaker-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 3px solid var(--ublue);
+        }
+
+        .speaker-info { flex: 1; }
+
+        .speaker-name {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 800;
+            font-size: 34px;
+            color: var(--ublue);
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+
+        .speaker-topic {
+            font-family: 'Alegreya', serif;
+            font-size: 24px;
+            color: var(--gris);
+            line-height: 1.4;
+            font-style: italic;
+        }
+
+        .speaker-day {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 700;
+            font-size: 17px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ucred);
+            margin-bottom: 6px;
+        }
+
+        .speakers-footer {
+            background: var(--ublue);
+            padding: 30px 60px;
+            text-align: center;
+        }
+        .speakers-footer p {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: 30px;
+            color: rgba(255,255,255,0.8);
+        }
+        .speakers-footer strong { color: var(--blanco); }
+
+        /* Sponsors bar */
+        .sponsors-bar {
+            background: #f5f5f5;
+            padding: 18px 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+        }
+        .sponsors-bar .label {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: 13px;
+            color: var(--gris);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .sponsors-bar .sep {
+            width: 1px;
+            height: 28px;
+            background: #ddd;
+        }
+
+        /* ============================================
+           6. CTF - CAPTURE THE FLAG (9:16)
+           ============================================ */
+        .story-ctf {
+            background: var(--ublue);
+        }
+
+        .ctf-content {
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 60px;
+        }
+
+        .ctf-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .ctf-badge {
+            background: var(--ucred);
+            color: var(--blanco);
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 800;
+            font-size: 20px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 12px 30px;
+        }
+
+        .ctf-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .ctf-title {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 900;
+            font-size: 180px;
+            color: var(--blanco);
+            line-height: 0.9;
+            margin-bottom: 15px;
+            letter-spacing: 8px;
+        }
+
+        .ctf-subtitle {
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 700;
+            font-size: 40px;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+        }
+
+        .ctf-desc {
+            font-family: 'Alegreya', serif;
+            font-size: 34px;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.4;
+            font-style: italic;
+            max-width: 800px;
+            margin-bottom: 50px;
+        }
+
+        .ctf-detail-row {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        .ctf-detail {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: 28px;
+            color: var(--blanco);
+        }
+        .ctf-detail .icon-circle {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: 2px solid var(--ucred);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="section-title">Stories CyberCon 2026 &mdash; 1080 &times; 1920px (9:16)</h1>
+
+    <!-- ==========================================
+         1. PORTADA PRINCIPAL (9:16)
+         ========================================== -->
+    <h1 class="section-title">1. Portada Principal &mdash; 1080 &times; 1920px</h1>
+
+    <div class="story-card story-portada" id="story-portada">
+        <div class="chevron-bg"></div>
+        <div class="grid-overlay"></div>
+
+        <div class="top-bar">
+            <div class="ucuenca-logo"><span style="font-weight:900">U</span>CUENCA</div>
+            <div class="faculty-label">
+                Facultad de Ingenier&iacute;a<br>
+                Dpto. El&eacute;ctrica, Electr&oacute;nica<br>
+                y Telecomunicaciones
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="event-badge">Simposio</div>
+            <div class="event-name">
+                CYBER<br>CON <span class="year">2026</span>
+            </div>
+
+            <div class="cyber-icon">
+                <div class="line"></div>
+                <div class="shield">&#x1F6E1;</div>
+                <div class="line"></div>
+            </div>
+
+            <div class="event-subtitle">
+                IA Generativa y Ciberseguridad:<br>
+                nuevos riesgos, nuevas defensas
+            </div>
+
+            <div style="display:flex;flex-direction:column;align-items:center;gap:30px;">
+                <div class="date-block">
+                    <span class="icon-cal">&#x1F4C5;</span>
+                    <span class="date-text">16 &ndash; 17 de abril, 2026</span>
+                </div>
+                <div class="location-text">
+                    <strong>Campus Balzay</strong> &middot; Auditorio C102 &middot; Cuenca, Ecuador
+                </div>
+                <!-- QR Registro -->
+                <div style="text-align:center;margin-top:30px;">
+                    <img src="png_exports/QR_Registro_CyberCon2026.png" style="width:200px;height:200px;border:3px solid rgba(255,255,255,0.2);border-radius:10px;" alt="QR Registro">
+                    <div style="font-family:'Alegreya Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.6);margin-top:8px;letter-spacing:2px;">Reg&iacute;strate aqu&iacute;</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sponsors -->
+        <div style="position:absolute;bottom:30px;left:60px;right:60px;display:flex;justify-content:center;align-items:center;gap:35px;">
+            <div style="font-family:'Alegreya Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:2px;">Organizan y auspician:</div>
+            <img src="logos/GrupoRadical/GRD_horizontal_v2_blanco.png" style="height:44px;object-fit:contain;">
+            <div style="width:1px;height:30px;background:rgba(255,255,255,0.15);"></div>
+            <div style="display:flex;align-items:center;gap:6px;">
+                <div style="font-family:'Alegreya Sans',sans-serif;font-weight:900;font-size:20px;color:#a01c18;">CC</div>
+                <div style="font-family:'Alegreya Sans',sans-serif;font-weight:800;font-size:11px;color:rgba(255,255,255,0.6);line-height:1.1;">CLUB CIBERSEGURIDAD<br><span style="font-weight:900;font-size:14px;color:white;">UCUENCA</span></div>
+            </div>
+            <div style="width:1px;height:30px;background:rgba(255,255,255,0.15);"></div>
+            <img src="logos/cedia_blanco.png" style="height:36px;object-fit:contain;" alt="CEDIA">
+            <div style="width:1px;height:30px;background:rgba(255,255,255,0.15);"></div>
+            <img src="logos/IronCybersec/Blanco y Negro/logo_blancosinfondo.png" style="height:36px;object-fit:contain;">
+            <div style="width:1px;height:30px;background:rgba(255,255,255,0.15);"></div>
+            <img src="logos/FernandoIllescas/FERNANDO ILLESCAS.png" style="height:26px;object-fit:contain;">
+            <div style="width:1px;height:30px;background:rgba(255,255,255,0.15);"></div>
+            <div style="font-family:'Alegreya Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.4);">ucuenca.edu.ec</div>
+        </div>
+
+        <div class="bottom-bar">
+            <span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         2. AGENDA DIA 1 (9:16)
+         ========================================== -->
+    <h1 class="section-title">2. Agenda D&iacute;a 1 &mdash; 1080 &times; 1920px</h1>
+
+    <div class="story-card story-agenda" id="story-dia1">
+        <div class="agenda-header">
+            <div class="logo-text"><span style="font-weight:900">U</span>CUENCA</div>
+            <div class="day-badge">CYBERCON 2026</div>
+        </div>
+        <div class="agenda-title-bar">
+            <h2>Jueves, <span>16 de abril</span></h2>
+            <p>Facultad de Ingenier&iacute;a &middot; Dpto. El&eacute;ctrica, Electr&oacute;nica y Telecomunicaciones</p>
+            <p>Campus Balzay &middot; Auditorio C102 &middot; Cuenca, Ecuador</p>
+        </div>
+
+        <div class="deco-chevrons">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+        </div>
+
+        <div class="agenda-body">
+            <div class="agenda-item">
+                <div class="agenda-time">8h30 &ndash; 9h00</div>
+                <div class="agenda-info">
+                    <div class="agenda-topic">Registro de participantes</div>
+                </div>
+            </div>
+
+            <div class="agenda-item">
+                <div class="agenda-time">9h00 &ndash; 9h30</div>
+                <div class="agenda-info">
+                    <div class="agenda-type">Inauguraci&oacute;n</div>
+                    <div class="agenda-topic">Apertura oficial del evento</div>
+                    <div class="agenda-speaker">Dra. Elina &Aacute;vila, Decana (e) Fac. Ingenier&iacute;a &middot; Dr. Fabi&aacute;n Astudillo, Coordinador</div>
+                </div>
+            </div>
+
+            <div class="agenda-item">
+                <div class="agenda-time">9h30 &ndash; 10h15</div>
+                <div class="agenda-info">
+                    <div class="agenda-type">Conferencia</div>
+                    <div class="agenda-topic">DALIA: La Fuerza Colaborativa que Protege el Sector Acad&eacute;mico (IA+SI)<br/>Reinventando la Ciber-Resiliencia en las IES mediante Modelos Escalables</div>
+                    <div class="agenda-speaker">Ing. Jorge Merch&aacute;n, Mgtr., L&iacute;der de seguridad de la informaci&oacute;n de CEDIA</div>
+                </div>
+            </div>
+
+            <div class="agenda-item">
+                <div class="agenda-time">10h15 &ndash; 11h00</div>
+                <div class="agenda-info">
+                    <div class="agenda-type">Conferencia</div>
+                    <div class="agenda-topic">Ingenier&iacute;a social avanzada, deep fake en tiempo real</div>
+                    <div class="agenda-speaker">Ing. Christian O&ntilde;a, MSc., Red Team Manager</div>
+                </div>
+            </div>
+
+            <div class="agenda-item break-item">
+                <div class="agenda-time">11h00 &ndash; 11h30</div>
+                <div class="agenda-info">
+                    <div class="agenda-type break-type">Receso</div>
+                    <div class="agenda-topic">&#9749; Coffee Break</div>
+                </div>
+            </div>
+
+            <div class="agenda-item">
+                <div class="agenda-time">11h30 &ndash; 12h15</div>
+                <div class="agenda-info">
+                    <div class="agenda-type">Conferencia</div>
+                    <div class="agenda-topic">Seguridad de Datos: Fortaleciendo la Confianza en el Sector Bancario</div>
+                    <div class="agenda-speaker">Ing. Jessica Morales, Mgtr., Oficial de Seguridad de la Informaci&oacute;n</div>
+                </div>
+            </div>
+
+            <div class="agenda-item">
+                <div class="agenda-time">12h15 &ndash; 13h00</div>
+                <div class="agenda-info">
+                    <div class="agenda-type">Conferencia</div>
+                    <div class="agenda-topic">Riesgos de IA en las pasarelas de pagos</div>
+                    <div class="agenda-speaker">Ing. Christian Cuenca, MSc., Director de Seguridad de la Informaci&oacute;n en Kushki</div>
+                </div>
+            </div>
+
+            <div class="agenda-item break-item">
+                <div class="agenda-time">13h00 &ndash; 15h00</div>
+                <div class="agenda-info">
+                    <div class="agenda-type break-type">Receso</div>
+                    <div class="agenda-topic">&#127869; Almuerzo libre</div>
+                </div>
+            </div>
+
+            <div class="agenda-item workshop-highlight">
+                <div class="agenda-time">15h00 &ndash; 18h00</div>
+                <div class="agenda-info">
+                    <div class="agenda-type">Taller Pr&aacute;ctico</div>
+                    <div class="agenda-topic">Dise&ntilde;o de campa&ntilde;as de phishing: de cero a bypass de 2FA</div>
+                    <div class="agenda-speaker">Facilitador: Ing. Cristian O&ntilde;a &middot; Aula de c&oacute;mputo C107</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sponsors bar -->
+        <div class="sponsors-bar">
+            <div class="label">Organizan y auspician:</div>
+            <div style="font-family:'Alegreya Sans',sans-serif;font-weight:900;font-size:22px;color:var(--ublue);">UCUENCA</div>
+            <div class="sep"></div>
+            <img src="logos/GrupoRadical/GRD_horizontal_color.png" style="height:42px;object-fit:contain;">
+            <div class="sep"></div>
+            <div style="display:flex;align-items:center;gap:3px;">
+                <div style="font-family:'Alegreya Sans',sans-serif;font-weight:900;font-size:18px;color:#a01c18;">CC</div>
+                <div style="font-family:'Alegreya Sans',sans-serif;font-weight:800;font-size:10px;color:var(--gris);line-height:1.1;">CLUB CIBERSEGURIDAD<br><span style="font-weight:900;font-size:13px;color:var(--ublue);">UCUENCA</span></div>
+            </div>
+            <div class="sep"></div>
+            <img src="logos/cedia_azul.png" style="height:34px;object-fit:contain;" alt="CEDIA">
+            <div class="sep"></div>
+            <img src="logos/IronCybersec/Para Web/logo-nobackground-200.png" style="height:34px;object-fit:contain;">
+            <div class="sep"></div>
+            <img src="logos/FernandoIllescas/FERNANDO ILLESCAS 1.png" style="height:24px;object-fit:contain;">
+        </div>
+        <div class="agenda-footer">
+            <div class="loc">Campus Balzay &middot; Cuenca, Ecuador</div>
+            <div class="web">ucuenca.edu.ec</div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         3. AGENDA DIA 2 (9:16)
+         ========================================== -->
+    <h1 class="section-title">3. Agenda D&iacute;a 2 &mdash; 1080 &times; 1920px</h1>
+
+    <div class="story-card story-agenda" id="story-dia2">
+        <div class="agenda-header">
+            <div class="logo-text"><span style="font-weight:900">U</span>CUENCA</div>
+            <div class="day-badge">CYBERCON 2026</div>
+        </div>
+        <div class="agenda-title-bar">
+            <h2>Viernes, <span>17 de abril</span></h2>
+            <p>Facultad de Ingenier&iacute;a &middot; Dpto. El&eacute;ctrica, Electr&oacute;nica y Telecomunicaciones</p>
+            <p>Campus Balzay &middot; Auditorio C102 &middot; Cuenca, Ecuador</p>
+        </div>
+
+        <div class="deco-chevrons">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+        </div>
+
+        <div class="agenda-body">
+            <div class="agenda-item">
+                <div class="agenda-time">8h30 &ndash; 9h00</div>
+                <div class="agenda-info">
+                    <div class="agenda-topic">Registro de participantes al CTF</div>
+                </div>
+            </div>
+
+            <div class="agenda-item">
+                <div class="agenda-time">9h00 &ndash; 9h30</div>
+                <div class="agenda-info">
+                    <div class="agenda-type">Inauguraci&oacute;n CTF</div>
+                    <div class="agenda-topic">Bienvenida e inauguraci&oacute;n del evento CTF</div>
+                    <div class="agenda-speaker">Ing. Fabi&aacute;n I&ntilde;iguez, Mgtr.</div>
+                </div>
+            </div>
+
+            <div class="agenda-item">
+                <div class="agenda-time">9h30 &ndash; 10h15</div>
+                <div class="agenda-info">
+                    <div class="agenda-type">Conferencia</div>
+                    <div class="agenda-topic">Tras la huella del Hacker &ndash; Ciberseguridad en el Ecuador</div>
+                    <div class="agenda-speaker">Ing. Fabi&aacute;n I&ntilde;iguez, Mgtr.</div>
+                </div>
+            </div>
+
+            <div class="agenda-item">
+                <div class="agenda-time">10h15 &ndash; 11h00</div>
+                <div class="agenda-info">
+                    <div class="agenda-type">Conferencia</div>
+                    <div class="agenda-topic">Hackear la IA: Seguridad para la Era de la Inteligencia Artificial</div>
+                    <div class="agenda-speaker">Ing. Jorge Moya, Mgtr., CTO en Ironcybersec</div>
+                </div>
+            </div>
+
+            <div class="agenda-item break-item">
+                <div class="agenda-time">11h00 &ndash; 11h30</div>
+                <div class="agenda-info">
+                    <div class="agenda-type break-type">Receso</div>
+                    <div class="agenda-topic">&#9749; Coffee Break</div>
+                </div>
+            </div>
+
+            <div class="agenda-item">
+                <div class="agenda-time">11h30 &ndash; 12h15</div>
+                <div class="agenda-info">
+                    <div class="agenda-type">Conferencia</div>
+                    <div class="agenda-topic">Errores cr&iacute;ticos en el manejo de evidencia digital: an&aacute;lisis de casos y consecuencias en procesos judiciales</div>
+                    <div class="agenda-speaker">My. Marco A. Pazmi&ntilde;o, Asesor Estrat&eacute;gico Operacional de la Direcci&oacute;n Nacional de Investigaci&oacute;n T&eacute;cnico Cient&iacute;fica</div>
+                </div>
+            </div>
+
+            <div class="agenda-item">
+                <div class="agenda-time">12h15 &ndash; 13h00</div>
+                <div class="agenda-info">
+                    <div class="agenda-type">Conferencia</div>
+                    <div class="agenda-topic">Red Team 2.0: Automatizando Pentests con Kali y Claude MCP</div>
+                    <div class="agenda-speaker">Dr. Andr&eacute;s Robles, Profesional de Seguridad de la Informaci&oacute;n</div>
+                </div>
+            </div>
+
+            <div class="agenda-item" style="background: linear-gradient(135deg, rgba(0,40,86,0.05), rgba(165,16,8,0.05)); margin: 0 -60px; padding: 22px 60px; border-left: 5px solid var(--ublue);">
+                <div class="agenda-time">13h00 &ndash; 13h30</div>
+                <div class="agenda-info">
+                    <div class="agenda-type" style="color: var(--ublue);">Conversatorio</div>
+                    <div class="agenda-topic">&#128172; Conversatorio con los especialistas</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sponsors bar -->
+        <div class="sponsors-bar">
+            <div class="label">Organizan y auspician:</div>
+            <div style="font-family:'Alegreya Sans',sans-serif;font-weight:900;font-size:22px;color:var(--ublue);">UCUENCA</div>
+            <div class="sep"></div>
+            <img src="logos/GrupoRadical/GRD_horizontal_color.png" style="height:42px;object-fit:contain;">
+            <div class="sep"></div>
+            <div style="display:flex;align-items:center;gap:3px;">
+                <div style="font-family:'Alegreya Sans',sans-serif;font-weight:900;font-size:18px;color:#a01c18;">CC</div>
+                <div style="font-family:'Alegreya Sans',sans-serif;font-weight:800;font-size:10px;color:var(--gris);line-height:1.1;">CLUB CIBERSEGURIDAD<br><span style="font-weight:900;font-size:13px;color:var(--ublue);">UCUENCA</span></div>
+            </div>
+            <div class="sep"></div>
+            <img src="logos/cedia_azul.png" style="height:34px;object-fit:contain;" alt="CEDIA">
+            <div class="sep"></div>
+            <img src="logos/IronCybersec/Para Web/logo-nobackground-200.png" style="height:34px;object-fit:contain;">
+            <div class="sep"></div>
+            <img src="logos/FernandoIllescas/FERNANDO ILLESCAS 1.png" style="height:24px;object-fit:contain;">
+        </div>
+        <div class="agenda-footer">
+            <div class="loc">Campus Balzay &middot; Cuenca, Ecuador</div>
+            <div class="web">ucuenca.edu.ec</div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         5. PONENTES DESTACADOS (9:16)
+         ========================================== -->
+    <h1 class="section-title">5. Ponentes Destacados &mdash; 1080 &times; 1920px</h1>
+
+    <div class="story-card story-speakers" id="story-speakers">
+        <div class="speakers-header">
+            <div class="sh-top">
+                <div style="font-family:'Alegreya Sans',sans-serif;font-weight:900;font-size:36px;color:white"><span>U</span>CUENCA</div>
+                <div style="font-family:'Alegreya Sans',sans-serif;font-weight:800;font-size:14px;letter-spacing:3px;text-transform:uppercase;color:white;background:var(--ucred);padding:8px 20px;">CYBERCON 2026</div>
+            </div>
+            <div style="font-family:'Alegreya Sans',sans-serif;font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:1px;margin-top:8px;">Facultad de Ingenier&iacute;a &middot; Dpto. El&eacute;ctrica, Electr&oacute;nica y Telecomunicaciones</div>
+            <h2 style="margin-top:10px;">Nuestros <span>Ponentes</span></h2>
+        </div>
+
+        <div class="speakers-list">
+            <div class="speaker-card">
+                <img src="conferencistas/jorgemerchan_crop.png" class="speaker-photo" alt="Jorge Merch&aacute;n">
+                <div class="speaker-info">
+                    <div class="speaker-day">D&iacute;a 1 &middot; Conferencia</div>
+                    <div class="speaker-name">Jorge Merch&aacute;n, Mgtr.</div>
+                    <div class="speaker-topic">DALIA: La Fuerza Colaborativa que Protege el Sector Acad&eacute;mico (IA+SI)</div>
+                </div>
+            </div>
+            <div class="speaker-card">
+                <img src="conferencistas/christianona.png" class="speaker-photo" style="object-position:35% 15%;" alt="Christian O&ntilde;a">
+                <div class="speaker-info">
+                    <div class="speaker-day">D&iacute;a 1 &middot; Conferencia</div>
+                    <div class="speaker-name">Christian O&ntilde;a, MSc.</div>
+                    <div class="speaker-topic">Ingenier&iacute;a social avanzada, deep fake en tiempo real</div>
+                </div>
+            </div>
+            <div class="speaker-card">
+                <img src="conferencistas/jessicamorales_crop.png" class="speaker-photo" alt="Jessica Morales">
+                <div class="speaker-info">
+                    <div class="speaker-day">D&iacute;a 1 &middot; Conferencia</div>
+                    <div class="speaker-name">Jessica Morales, Mgtr.</div>
+                    <div class="speaker-topic">Seguridad de datos en el sector bancario</div>
+                </div>
+            </div>
+            <div class="speaker-card">
+                <img src="conferencistas/christiancuenca.png" class="speaker-photo" alt="Christian Cuenca">
+                <div class="speaker-info">
+                    <div class="speaker-day">D&iacute;a 1 &middot; Conferencia</div>
+                    <div class="speaker-name">Christian Cuenca, MSc.</div>
+                    <div class="speaker-topic">Riesgos de IA en pasarelas de pagos</div>
+                </div>
+            </div>
+            <div class="speaker-card">
+                <img src="conferencistas/fabianIniguez_crop.png" class="speaker-photo" alt="Fabi&aacute;n I&ntilde;iguez">
+                <div class="speaker-info">
+                    <div class="speaker-day">D&iacute;a 2 &middot; Conferencia</div>
+                    <div class="speaker-name">Fabi&aacute;n I&ntilde;iguez, Mgtr.</div>
+                    <div class="speaker-topic">Tras la huella del Hacker &ndash; Ciberseguridad en Ecuador</div>
+                </div>
+            </div>
+            <div class="speaker-card">
+                <img src="conferencistas/jorgemoya_crop.png" class="speaker-photo" alt="Jorge Moya">
+                <div class="speaker-info">
+                    <div class="speaker-day">D&iacute;a 2 &middot; Conferencia</div>
+                    <div class="speaker-name">Jorge Moya, Mgtr.</div>
+                    <div class="speaker-topic">Hackear la IA: Seguridad para la Era de la IA</div>
+                </div>
+            </div>
+            <div class="speaker-card">
+                <img src="conferencistas/mymarcopazmino_crop.png" class="speaker-photo" alt="Marco Pazmi&ntilde;o">
+                <div class="speaker-info">
+                    <div class="speaker-day">D&iacute;a 2 &middot; Conferencia</div>
+                    <div class="speaker-name">My. Marco A. Pazmi&ntilde;o</div>
+                    <div class="speaker-topic">Errores cr&iacute;ticos en el manejo de evidencia digital</div>
+                </div>
+            </div>
+            <div class="speaker-card">
+                <img src="conferencistas/andresrobles_crop.png" class="speaker-photo" alt="Andr&eacute;s Robles">
+                <div class="speaker-info">
+                    <div class="speaker-day">D&iacute;a 2 &middot; Conferencia</div>
+                    <div class="speaker-name">Dr. Andr&eacute;s Robles</div>
+                    <div class="speaker-topic">Red Team 2.0: Pentests con Kali y Claude MCP</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="speakers-footer">
+            <p><strong>16 &ndash; 17 abril 2026</strong> &middot; Campus Balzay &middot; Cuenca, Ecuador</p>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         6. CTF - CAPTURE THE FLAG (9:16)
+         ========================================== -->
+    <h1 class="section-title">6. CTF &mdash; Capture The Flag &mdash; 1080 &times; 1920px</h1>
+
+    <div class="story-card story-ctf" id="story-ctf">
+        <div class="grid-overlay"></div>
+        <div class="ctf-content">
+            <!-- Top: UCuenca + badge + GRD -->
+            <div class="ctf-top">
+                <div style="font-family:'Alegreya Sans',sans-serif;font-weight:900;font-size:48px;color:white"><span>U</span>CUENCA</div>
+                <div style="display:flex;align-items:center;gap:20px;">
+                    <div class="ctf-badge">CYBERCON 2026</div>
+                    <img src="logos/GrupoRadical/GRD_horizontal_v2_blanco.png" style="height:48px;object-fit:contain;">
+                </div>
+            </div>
+
+            <div class="ctf-main">
+                <div class="ctf-title">CTF</div>
+                <div class="ctf-subtitle">Capture The Flag</div>
+                <div class="ctf-desc">
+                    Pon a prueba tus habilidades en ciberseguridad<br>
+                    en nuestro desaf&iacute;o CTF
+                </div>
+
+                <div style="display:flex;flex-direction:column;align-items:center;gap:40px;">
+                    <div class="ctf-detail-row">
+                        <div class="ctf-detail">
+                            <div class="icon-circle">&#128197;</div>
+                            <div>
+                                <strong>Viernes 17 de abril</strong><br>
+                                <span style="font-size:22px;color:rgba(255,255,255,0.6)">9h00 en adelante</span>
+                            </div>
+                        </div>
+                        <div class="ctf-detail">
+                            <div class="icon-circle">&#128205;</div>
+                            <div>
+                                <strong>Campus Balzay</strong><br>
+                                <span style="font-size:22px;color:rgba(255,255,255,0.6)">Cuenca, Ecuador</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- QR Registro CTF -->
+                    <div style="text-align:center;margin-top:20px;">
+                        <img src="png_exports/QR_CTF_CyberCon2026.png" style="width:220px;height:220px;border-radius:12px;border:3px solid rgba(255,255,255,0.3);">
+                        <div style="font-family:'Alegreya Sans',sans-serif;font-size:18px;color:rgba(255,255,255,0.7);margin-top:10px;font-weight:700;">Reg&iacute;strate aqu&iacute;</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sponsors -->
+            <div style="display:flex;justify-content:center;align-items:center;gap:35px;padding:20px 0;border-top:1px solid rgba(255,255,255,0.1);">
+                <div style="font-family:'Alegreya Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:2px;">Organizan:</div>
+                <img src="logos/GrupoRadical/GRD_horizontal_v2_blanco.png" style="height:44px;object-fit:contain;">
+                <div style="width:1px;height:25px;background:rgba(255,255,255,0.15);"></div>
+                <div style="display:flex;align-items:center;gap:6px;">
+                    <div style="font-family:'Alegreya Sans',sans-serif;font-weight:900;font-size:16px;color:#a01c18;">CC</div>
+                    <div>
+                        <div style="font-family:'Alegreya Sans',sans-serif;font-weight:800;font-size:9px;color:#a01c18;letter-spacing:1px;line-height:1;">CLUB CIBERSEGURIDAD</div>
+                        <div style="font-family:'Alegreya Sans',sans-serif;font-weight:900;font-size:12px;color:white;line-height:1;">UCUENCA</div>
+                    </div>
+                </div>
+                <div style="width:1px;height:25px;background:rgba(255,255,255,0.15);"></div>
+                <img src="logos/cedia_blanco.png" style="height:36px;object-fit:contain;" alt="CEDIA">
+                <div style="width:1px;height:25px;background:rgba(255,255,255,0.15);"></div>
+                <img src="logos/IronCybersec/Blanco y Negro/logo_blancosinfondo.png" style="height:36px;object-fit:contain;">
+                <div style="width:1px;height:25px;background:rgba(255,255,255,0.15);"></div>
+                <img src="logos/FernandoIllescas/FERNANDO ILLESCAS.png" style="height:28px;object-fit:contain;">
+            </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div style="position:absolute;bottom:0;left:0;right:0;display:flex;height:14px;">
+            <span style="flex:1;background:#F07D00"></span>
+            <span style="flex:1;background:var(--ucred)"></span>
+            <span style="flex:1;background:var(--gris)"></span>
+            <span style="flex:1;background:#F07D00"></span>
+        </div>
+    </div>
+
+</body>
+</html>

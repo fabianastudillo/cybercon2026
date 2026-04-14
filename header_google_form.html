@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Header Google Form - CyberCon 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+            gap: 30px;
+            font-family: 'Alegreya Sans', sans-serif;
+        }
+
+        h2 {
+            color: #002856;
+            font-size: 18px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        p.instructions {
+            max-width: 1600px;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .header-banner {
+            width: 1600px;
+            height: 400px;
+            background: #002856;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 80px;
+        }
+
+        /* Chevron decorativo izquierdo */
+        .chevrons {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0;
+            opacity: 0.15;
+        }
+
+        .chevron-row {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .chevron {
+            width: 0;
+            height: 0;
+            border-left: 40px solid transparent;
+            border-right: 40px solid transparent;
+            border-bottom: 25px solid white;
+            transform: rotate(0deg);
+        }
+
+        /* Patron geometrico sutil */
+        .pattern-bg {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 500px;
+            height: 100%;
+            opacity: 0.08;
+        }
+
+        .pattern-bg svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Contenido izquierdo - Logo */
+        .left-content {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 2;
+        }
+
+        .ucuenca-logo {
+            font-family: 'Alegreya Sans', Arial, sans-serif;
+            font-size: 72px;
+            font-weight: 900;
+            color: white;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        .ucuenca-logo .u-letter {
+            font-weight: 900;
+        }
+
+        .ucuenca-logo .cuenca-text {
+            font-weight: 700;
+        }
+
+        .red-line {
+            width: 300px;
+            height: 4px;
+            background: #A51008;
+        }
+
+        .subtitle-faculty {
+            font-family: 'Alegreya Sans', Arial, sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        /* Contenido derecho - Evento */
+        .right-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
+            z-index: 2;
+        }
+
+        .event-name {
+            font-family: 'Alegreya Sans', Arial, sans-serif;
+            font-size: 84px;
+            font-weight: 900;
+            color: white;
+            line-height: 0.95;
+            text-align: right;
+            letter-spacing: -1px;
+        }
+
+        .event-name .year {
+            color: #A51008;
+        }
+
+        .event-tagline {
+            font-family: 'Alegreya Sans', Arial, sans-serif;
+            font-size: 22px;
+            font-weight: 400;
+            color: rgba(255,255,255,0.8);
+            text-align: right;
+            line-height: 1.3;
+            max-width: 450px;
+        }
+
+        .event-tagline strong {
+            color: white;
+            font-weight: 700;
+        }
+
+        .event-details {
+            font-family: 'Alegreya Sans', Arial, sans-serif;
+            font-size: 20px;
+            color: rgba(255,255,255,0.6);
+            text-align: right;
+        }
+
+        /* Linea vertical separadora */
+        .divider {
+            width: 2px;
+            height: 200px;
+            background: linear-gradient(to bottom, transparent, #A51008, transparent);
+            z-index: 2;
+        }
+
+        /* Chevrones decorativos en esquina superior derecha */
+        .corner-chevrons {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            display: flex;
+            gap: 6px;
+            z-index: 1;
+        }
+
+        .mini-chevron {
+            width: 24px;
+            height: 24px;
+            position: relative;
+        }
+
+        .mini-chevron::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-bottom: 14px solid rgba(165,16,8,0.4);
+        }
+
+        /* Elementos geometricos flotantes */
+        .geo-element {
+            position: absolute;
+            z-index: 1;
+        }
+
+        .geo-element.square1 {
+            width: 12px;
+            height: 12px;
+            background: #A51008;
+            top: 40px;
+            left: 350px;
+            opacity: 0.6;
+        }
+
+        .geo-element.square2 {
+            width: 8px;
+            height: 8px;
+            background: #6F6F6F;
+            bottom: 60px;
+            left: 380px;
+            opacity: 0.5;
+        }
+
+        .geo-element.square3 {
+            width: 10px;
+            height: 10px;
+            background: #A51008;
+            bottom: 40px;
+            right: 420px;
+            opacity: 0.4;
+        }
+
+        /* Onda decorativa inferior */
+        .bottom-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(to right, #A51008, #A51008 30%, #002856 30%, #002856 60%, #6F6F6F 60%, #6F6F6F);
+        }
+
+        /* Chevron grande decorativo */
+        .big-chevron {
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .big-chevron svg {
+            width: 300px;
+            height: 300px;
+            opacity: 0.07;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Header para Google Forms &mdash; CyberCon 2026</h2>
+    <p class="instructions">
+        Dimensiones: 1600 &times; 400 px &mdash; Haz clic derecho sobre la imagen &rarr; "Captura de pantalla" o usa una herramienta de captura.<br>
+        Tambi&eacute;n puedes abrir este archivo en el navegador y usar la extensi&oacute;n "GoFullPage" para exportar.
+    </p>
+
+    <!-- === BANNER HEADER === -->
+    <div class="header-banner" id="banner">
+
+        <!-- Chevron grande decorativo de fondo -->
+        <div class="big-chevron">
+            <svg viewBox="0 0 200 200" fill="none">
+                <path d="M0 150 L100 50 L200 150" stroke="white" stroke-width="30" fill="none"/>
+                <path d="M0 180 L100 80 L200 180" stroke="white" stroke-width="20" fill="none"/>
+            </svg>
+        </div>
+
+        <!-- Elementos geometricos -->
+        <div class="geo-element square1"></div>
+        <div class="geo-element square2"></div>
+        <div class="geo-element square3"></div>
+
+        <!-- Esquina decorativa -->
+        <div class="corner-chevrons">
+            <div class="mini-chevron"></div>
+            <div class="mini-chevron"></div>
+            <div class="mini-chevron"></div>
+        </div>
+
+        <!-- Logo UCuenca -->
+        <div class="left-content">
+            <div class="ucuenca-logo">
+                <span class="u-letter">U</span><span class="cuenca-text">CUENCA</span>
+            </div>
+            <div class="red-line"></div>
+            <div class="subtitle-faculty">INGENIER&Iacute;A</div>
+        </div>
+
+        <!-- Separador -->
+        <div class="divider"></div>
+
+        <!-- Info del evento -->
+        <div class="right-content">
+            <div class="event-name">
+                CYBER<br>CON <span class="year">2026</span>
+            </div>
+            <div class="event-tagline">
+                <strong>IA Generativa y Ciberseguridad:</strong><br>
+                nuevos riesgos, nuevas defensas
+            </div>
+            <div class="event-details">
+                16 &ndash; 17 de abril &middot; Campus Balzay &middot; Cuenca
+            </div>
+        </div>
+
+        <!-- Barra inferior tricolor -->
+        <div class="bottom-wave"></div>
+    </div>
+
+</body>
+</html>

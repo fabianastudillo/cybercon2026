@@ -217,6 +217,25 @@
             background: #c41a10;
         }
 
+        .hero-cta-ctf {
+            display: inline-block;
+            background: transparent;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 700;
+            padding: 12px 36px;
+            border-radius: 6px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: 2px solid var(--ucred);
+            transition: background 0.2s;
+        }
+
+        .hero-cta-ctf:hover {
+            background: var(--ucred);
+        }
+
         .hero-register-hint {
             font-size: 13px;
             color: rgba(255, 255, 255, 0.5);
@@ -616,6 +635,34 @@
             box-shadow: 0 8px 25px rgba(165, 16, 8, 0.4);
         }
 
+        .cta-btn-ctf {
+            display: inline-block;
+            background: transparent;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 800;
+            padding: 16px 50px;
+            border-radius: 8px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 3px solid var(--ucred);
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+
+        .cta-btn-ctf:hover {
+            transform: translateY(-2px);
+            background: var(--ucred);
+            box-shadow: 0 8px 25px rgba(165, 16, 8, 0.4);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         /* ====== FOOTER ====== */
         .footer {
             background: var(--ublue);
@@ -709,20 +756,20 @@
                 </div>
                 <div class="hero-tagline">
                     <strong>IA Generativa y Ciberseguridad:</strong><br>
-                    Nuevos Riesgos, Nuevas Defensas
+                    nuevos riesgos, nuevas defensas
                 </div>
                 <div class="hero-meta">
                     <div class="hero-meta-item">
                         <span class="hero-meta-icon">&#128197;</span>
                         <div class="hero-meta-text">
-                            <strong>16 &ndash; 17 de Abril, 2026</strong>
+                            <strong>16 &ndash; 17 de abril, 2026</strong>
                             Jueves y Viernes
                         </div>
                     </div>
                     <div class="hero-meta-item">
                         <span class="hero-meta-icon">&#128205;</span>
                         <div class="hero-meta-text">
-                            <strong>Eco Campus Balzay</strong>
+                            <strong>Campus Balzay</strong>
                             Auditorio C102 &middot; Cuenca, Ecuador
                         </div>
                     </div>
@@ -730,7 +777,9 @@
             </div>
             <div class="hero-right">
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSew5xcIR7-Xa5Orfb0X_k3tCipshEnXYihrBTcVrMZ_UQSyIg/viewform"
-                    target="_blank" class="hero-cta">Reg&iacute;strate</a>
+                    target="_blank" class="hero-cta">Reg&iacute;strate en el Simposio</a>
+                <a href="https://forms.cloud.microsoft/r/QMqTabkwGC"
+                    target="_blank" class="hero-cta-ctf">&#127919; Reg&iacute;strate en el CTF</a>
                 <div class="hero-register-hint">Entrada gratuita &middot; Cupos limitados</div>
             </div>
         </div>
@@ -841,11 +890,11 @@
         <div class="agenda-tabs">
             <div class="agenda-tab active" onclick="switchDay(1)">
                 D&iacute;a 1 &ndash; Conferencias + Taller
-                <span class="tab-date">Jueves 16 de Abril</span>
+                <span class="tab-date">Jueves 16 de abril</span>
             </div>
             <div class="agenda-tab" onclick="switchDay(2)">
                 D&iacute;a 2 &ndash; CTF + Conferencias
-                <span class="tab-date">Viernes 17 de Abril</span>
+                <span class="tab-date">Viernes 17 de abril</span>
             </div>
         </div>
 
@@ -1000,14 +1049,14 @@
             <div class="red-accent"></div>
             <div class="location-grid">
                 <div class="location-info">
-                    <h3>Eco Campus Balzay</h3>
+                    <h3>Campus Balzay</h3>
                     <div class="location-detail">
                         <span class="icon">&#128205;</span>
                         <div>Auditorio C102<br>Universidad de Cuenca<br>Cuenca, Ecuador</div>
                     </div>
                     <div class="location-detail">
                         <span class="icon">&#128197;</span>
-                        <div>16 y 17 de Abril, 2026<br>8:30 a 18:00 (D&iacute;a 1) &middot; 8:30 a 13:30 (D&iacute;a 2)
+                        <div>16 y 17 de abril, 2026<br>8:30 a 18:00 (D&iacute;a 1) &middot; 8:30 a 13:30 (D&iacute;a 2)
                         </div>
                     </div>
                     <div class="location-detail">
@@ -1052,8 +1101,7 @@
             </div>
             <div class="sponsor-divider"></div>
             <div class="sponsor-item">
-                <div style="font-family:'Alegreya Sans',sans-serif;font-weight:700;font-size:42px;color:#121A54;">cedia
-                </div>
+                <img src="data:image/webp;base64,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" style="height:40px;object-fit:contain;" alt="CEDIA">
             </div>
             <div class="sponsor-divider"></div>
             <div class="sponsor-item">
@@ -1072,8 +1120,12 @@
     <section class="cta-section" id="registro">
         <h2>&#128640; Asegura tu lugar</h2>
         <p>Entrada gratuita &middot; Cupos limitados &middot; Certificado Digital de asistencia</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSew5xcIR7-Xa5Orfb0X_k3tCipshEnXYihrBTcVrMZ_UQSyIg/viewform"
-            target="_blank" class="cta-btn">Registrarme ahora</a>
+        <div class="cta-buttons">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSew5xcIR7-Xa5Orfb0X_k3tCipshEnXYihrBTcVrMZ_UQSyIg/viewform"
+                target="_blank" class="cta-btn">Registrarme ahora</a>
+            <a href="https://forms.cloud.microsoft/r/QMqTabkwGC"
+                target="_blank" class="cta-btn-ctf">&#127919; Inscribirme al CTF</a>
+        </div>
     </section>
 
     <!-- ====== FOOTER ====== -->
